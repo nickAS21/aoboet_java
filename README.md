@@ -1,5 +1,5 @@
 # 📦 AoBoET Android Project
-**Project:** AoBoET Android (decompiled WebView-based app for BMS over Wi-Fi)
+**Project:** AoBoET Android (decompiled WebView-based app for BMS over Wi-Fi from aoboet.apk)
 
 ## 📁 Project Structure
 
