@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style type="text/css">
+    	html,body,.mui-content{height: 100%;}
+    	body,.mui-content{background: #eeeeee;}
+    	.mui-bar{height: 55px;padding-top: 5px;}
+    	.mui-bar .chart{display: none;}
+    	.mui-bar-nav.mui-bar .mui-icon.mui-icon-back:before{content: ' ';}
+    	.mui-bar-nav.mui-bar .mui-icon.mui-icon-back{background-image: url(img/arrow_back.png);background-position: center;
+    		background-repeat: no-repeat;background-size: 50%;width: 44px;height: 44px;}
+    	.mui-bar-tab{background: #EEEEEE;}
+    	.mui-bar-nav{background-color: #FFFFFF;box-shadow: none;}
+    	.count{text-align: center;padding: 40px 0px;background: #FFFFFF;}
+    	.count h1{margin-bottom: 0px;font-weight: normal;}
+    	.count .count_span{color: #666666;}
+    	.volt{background: #FFFFFF;padding-bottom: 20px;}
+    	.volt h2{text-align: center;font-weight: normal;margin-top: 0;}
+    	.volt h2 small{font-size: 0.5em;}
+    	.volt ul{margin: 0;width: 100%;padding: 10px 5%;overflow: hidden;}
+    	.volt ul li{margin: 0 3% 3%;padding: 2% 0;width: 19%;border: 1px solid #cbcbcb;list-style: none;float: left;font-size: 14px;
+    		line-height: 1.5;text-align: center;}
+    	.others{text-align: center;margin: 25px 0;width: 100%;}
+    	.others h3{font-weight: normal; }
+    	.others h3 small{font-size: 12px;}
+    	.others p{font-size: 12px;}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-icon mui-icon-back mui-pull-left mui-action-back"></a>
+	    <h1 class="mui-title" id="title">BMU infomation</h1>
+	    <!--<a class="mui-icon mui-action-menu mui-icon-more mui-pull-right"></a>-->
+	</header>
+	<div class="mui-content">
+		<div class="count">
+			<h1 id="c">0</h1>
+			<small class="count_span">count</small>
+		</div>
+		<div class="volt">
+			<h2>Voltage <small>V</small></h2>
+			<ul id="vs">
+			</ul>
+		</div>	
+		<table class="others">
+			<tr>
+				<td>
+					<h3><span id="temp">0</span> <small>℃</small></h3>
+            		<p>Temperature</p>
+				</td>
+				<td>
+					<h3><span id="energy">0</span> <small>%</small></h3>
+            		<p>Energy</p>
+				</td>
+				<td>
+					<h3><span id="fault_code">0x00000000</span></h3>
+            		<p>Fault Code</p>
+				</td>
+			</tr>
+		</div>
+	</div>
+</body>
+
+<script src="js/common.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+function list_tmp (v) {
+	return '<li>'+v+'</li>'
+}
+
+mui.init();
+mui.plusReady(function(){
+	var ws = plus.webview.currentWebview();
+	var bmu = ws.bmu;
+	var url = "http://"+C.host+":"+C.port+"/index.php?s=/Api/Device/bmuDetail.html";
+	mui.getJSON(url,{bmu:bmu},function(json){
+		if(json.status == 1){
+			var c = json.data.bcount;
+			var vs = json.data.BV;
+			var temp = json.data.deg;
+			var energy = json.data.SOC;
+			var fault_code = json.data.fault_code;
+			document.getElementById("c").innerText = c;
+			document.getElementById("temp").innerText = temp;
+			document.getElementById("energy").innerText = energy;
+			document.getElementById("fault_code").innerText = fault_code;
+			for (var i = 0; i < vs.length; i++) {
+				var v = parseFloat(vs[i]);
+				document.getElementById("vs").innerHTML += list_tmp(v.toFixed(3));
+			}
+		}else{
+//			mui.toast(json.msg);
+		}
+	});
+});
+</script>
+</html>

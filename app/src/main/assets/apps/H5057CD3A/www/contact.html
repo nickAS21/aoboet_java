@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Contact information</title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style type="text/css">
+    	body{background: #eeeeee;}
+    	.mui-bar{height: 55px;padding-top: 5px;}
+    	ul,li{margin: 0;padding: 0;list-style: none;}
+    	.mui-bar-nav.mui-bar .mui-icon.mui-icon-back:before{content: ' ';}
+    	.mui-bar-nav.mui-bar .mui-icon.mui-icon-back{background-image: url(img/arrow_back.png);background-position: center;
+    		background-repeat: no-repeat;background-size: 50%;width: 44px;height: 44px;}
+    	.mui-bar-tab{background: #EEEEEE;}
+    	.mui-bar-nav{background-color: #FFFFFF;box-shadow: none;}
+    	.content{background: #FFFFFF;padding: 15px;line-height: 1.5;margin-top: 10px;}
+    	.content h4{margin-bottom: 15px; color: #002870;border-bottom:1px solid #999999;padding-bottom: 15px;line-height: 1.2;}
+    	.content li{font-size: 14px;margin-bottom: 4px;color: #666666;padding-left: 28px;background-image: url(img/icon_contacts.png);
+    		background-repeat: no-repeat;background-position: left top;background-size: 25px;}
+    	.content li:nth-child(1){background-position:-3px -2px;}
+    	.content li:nth-child(2){background-position:-3px -48px;}
+    	.content li:nth-child(3){background-position:-3px -72px;}
+    	/*.content li:nth-child(4){background-position:-3px -96px;}
+    	.content li:nth-child(5){background-position:-3px -119px;}*/
+    	.content li:nth-child(4){background-position:-3px -144px;}
+    	.content li a{color: #666666;}
+    	.content li a:active{color:#002870;}
+    </style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a class="mui-action-back mui-icon mui-icon-back mui-pull-left"></a>
+	    <h1 class="mui-title">Contact us</h1>
+	</header>
+	<div class="mui-content">
+		<div class="content">
+			<h4>AOBO Environmental New Energy (Wuxi) Co.,Ltd. </h4>
+			<ul>
+				<li>No.358 Qianlu Qianqiao Huishan District, Wuxi, Jiangsu P.R. China</li>
+				<li>info@aoboet.com.au</li>
+				<li><a href="tel:86-510-85366880">86-510-85366880</a></li>
+				<!--<li>86-510-8320-3470</li>
+				<li><a href="mailto:info@aobocs.com">info@aobocs.com</a></li>-->
+				<li class="web"><a data-href="http://www.aoboet.com.cn/">www.aoboet.com.cn</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+<script src="js/common.js"></script>
+<script type="text/javascript" charset="utf-8">
+mui.init();
+mui.plusReady(function(){
+	mui('.web').on('tap','[data-href]',function(){
+		
+		if(plus.os.name == "iOS"){
+			
+		}else{
+			var href = this.getAttribute("data-href");
+			var main = plus.android.runtimeMainActivity();
+	    	var Intent = plus.android.importClass("android.content.Intent");
+	    	var uri = plus.android.importClass("android.net.Uri");
+	    	var intent = new Intent();
+	    	intent.setData(uri.parse(href)).setAction("android.intent.action.VIEW");
+	    	main.startActivity(intent);
+		}
+	})
+});
+</script>
+</html>

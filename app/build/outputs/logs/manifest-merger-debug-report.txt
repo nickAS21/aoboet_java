@@ -1,0 +1,358 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:2:1-95:12
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:2:1-95:12
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:2:1-95:12
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:2:1-95:12
+MERGED from [com.google.android.material:material:1.3.0] /home/nick/.gradle/caches/transforms-3/0e7de19a25ae133037ce2e6af69f2347/transformed/material-1.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/nick/.gradle/caches/transforms-3/8dfa9c1ed714f87bec8a9d47f00598f7/transformed/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.3.1] /home/nick/.gradle/caches/transforms-3/1c6e7e9325ec705d9b17f10cae8b7069/transformed/appcompat-1.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.27] /home/nick/.gradle/caches/transforms-3/6431b7e872484db56d4de3148805333e/transformed/jetified-android-gif-drawable-1.2.27/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/nick/.gradle/caches/transforms-3/c46b8525080ff4894366071aeee968fb/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.3.6] /home/nick/.gradle/caches/transforms-3/803728e42e6131c1d0eaf4121bd10aaa/transformed/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.4] /home/nick/.gradle/caches/transforms-3/52bff82571ac19f0e0a59cce789ef73b/transformed/jetified-activity-1.2.4/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /home/nick/.gradle/caches/transforms-3/ae56c243108437700a780646e87fce03/transformed/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nick/.gradle/caches/transforms-3/d3e025e1dcefc965033d0dd8b1174cfa/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/nick/.gradle/caches/transforms-3/45f68790eaa85e2ce928f05736775591/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/nick/.gradle/caches/transforms-3/272903d631b61a48703b9c05bd36c107/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] /home/nick/.gradle/caches/transforms-3/a1ce48b30830a1336522c9ec3926a6f9/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/nick/.gradle/caches/transforms-3/7c2ad8ded8dd02f5e86b9b84994fbf09/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/nick/.gradle/caches/transforms-3/89b41710f2d91b58625f9b5694ae9564/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nick/.gradle/caches/transforms-3/9a6807a9c9e8c5a1572e7ea1a59437dd/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nick/.gradle/caches/transforms-3/e60d9b0e3c0f13e0655ea89562f1a60f/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/nick/.gradle/caches/transforms-3/311f74372c729a2210db475d77740267/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/nick/.gradle/caches/transforms-3/ad6d5a2adf312d65183193700fe9970a/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] /home/nick/.gradle/caches/transforms-3/f0ea38471dbdf8dc8d8867a3e8452d8b/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.5.0] /home/nick/.gradle/caches/transforms-3/cb0ec623bdc10bc63d1b95e97c599215/transformed/core-1.5.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nick/.gradle/caches/transforms-3/7d69d88f3a0918321725d811b9ce5d98/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /home/nick/.gradle/caches/transforms-3/a5c67f1adad571f09fc2ed525eb3b569/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] /home/nick/.gradle/caches/transforms-3/40436f9aee1a76ad1fc1de2d67e1425a/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /home/nick/.gradle/caches/transforms-3/560804d170b54a9fdf12cc82762cb264/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /home/nick/.gradle/caches/transforms-3/42a0b0d0b6d0e6cc52ffe7b992e7661e/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/nick/.gradle/caches/transforms-3/53a12f004e178d385f35733c7fbc5b57/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/nick/.gradle/caches/transforms-3/b30e4a71c1ef964af839d7f64f4d438c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.tracing:tracing:1.0.0] /home/nick/.gradle/caches/transforms-3/24180a40e1bc149483e70d46cdf73c21/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nick/.gradle/caches/transforms-3/30c95a16d9e13a9f4463da43c90d7507/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /home/nick/.gradle/caches/transforms-3/78db385f9695e7bb3111b6fdfc31ff41/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/nick/.gradle/caches/transforms-3/b9bf066d9578acdccc901806ed543a19/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nick/.gradle/caches/transforms-3/8e118cd241a5493145339244441866ba/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nick/.gradle/caches/transforms-3/eddc99a47fe3d0e1edb4c9b3001ebc3f/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nick/.gradle/caches/transforms-3/12b5734e0bba8b9d92f2db2e4c0d216c/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/nick/.gradle/caches/transforms-3/2fb391339688505a99752613cb520ec1/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/nick/.gradle/caches/transforms-3/f1dad7d723938805243be1b3a061f621/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/nick/.gradle/caches/transforms-3/cf923ef056cda39007801f2acf5f3dd5/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:2:1-7:12
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:2:1-95:12
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:2:1-95:12
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:2:1-95:12
+	package
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:7:5-35
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+	android:compileSdkVersionCodename
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:6:5-43
+	android:versionName
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:4:5-30
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+	android:compileSdkVersion
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:5:5-35
+	xmlns:android
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:3:5-28
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+	platformBuildVersionName
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:9:5-34
+	platformBuildVersionCode
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:8:5-34
+uses-sdk
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:11:5-13:40
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:11:5-13:40
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:11:5-13:40
+MERGED from [com.google.android.material:material:1.3.0] /home/nick/.gradle/caches/transforms-3/0e7de19a25ae133037ce2e6af69f2347/transformed/material-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.3.0] /home/nick/.gradle/caches/transforms-3/0e7de19a25ae133037ce2e6af69f2347/transformed/material-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/nick/.gradle/caches/transforms-3/8dfa9c1ed714f87bec8a9d47f00598f7/transformed/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/nick/.gradle/caches/transforms-3/8dfa9c1ed714f87bec8a9d47f00598f7/transformed/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.3.1] /home/nick/.gradle/caches/transforms-3/1c6e7e9325ec705d9b17f10cae8b7069/transformed/appcompat-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.3.1] /home/nick/.gradle/caches/transforms-3/1c6e7e9325ec705d9b17f10cae8b7069/transformed/appcompat-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.27] /home/nick/.gradle/caches/transforms-3/6431b7e872484db56d4de3148805333e/transformed/jetified-android-gif-drawable-1.2.27/AndroidManifest.xml:5:5-44
+MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.27] /home/nick/.gradle/caches/transforms-3/6431b7e872484db56d4de3148805333e/transformed/jetified-android-gif-drawable-1.2.27/AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/nick/.gradle/caches/transforms-3/c46b8525080ff4894366071aeee968fb/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/nick/.gradle/caches/transforms-3/c46b8525080ff4894366071aeee968fb/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /home/nick/.gradle/caches/transforms-3/803728e42e6131c1d0eaf4121bd10aaa/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /home/nick/.gradle/caches/transforms-3/803728e42e6131c1d0eaf4121bd10aaa/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /home/nick/.gradle/caches/transforms-3/52bff82571ac19f0e0a59cce789ef73b/transformed/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] /home/nick/.gradle/caches/transforms-3/52bff82571ac19f0e0a59cce789ef73b/transformed/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /home/nick/.gradle/caches/transforms-3/ae56c243108437700a780646e87fce03/transformed/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.1] /home/nick/.gradle/caches/transforms-3/ae56c243108437700a780646e87fce03/transformed/jetified-appcompat-resources-1.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nick/.gradle/caches/transforms-3/d3e025e1dcefc965033d0dd8b1174cfa/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nick/.gradle/caches/transforms-3/d3e025e1dcefc965033d0dd8b1174cfa/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/nick/.gradle/caches/transforms-3/45f68790eaa85e2ce928f05736775591/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/nick/.gradle/caches/transforms-3/45f68790eaa85e2ce928f05736775591/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/nick/.gradle/caches/transforms-3/272903d631b61a48703b9c05bd36c107/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /home/nick/.gradle/caches/transforms-3/272903d631b61a48703b9c05bd36c107/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] /home/nick/.gradle/caches/transforms-3/a1ce48b30830a1336522c9ec3926a6f9/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /home/nick/.gradle/caches/transforms-3/a1ce48b30830a1336522c9ec3926a6f9/transformed/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/nick/.gradle/caches/transforms-3/7c2ad8ded8dd02f5e86b9b84994fbf09/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/nick/.gradle/caches/transforms-3/7c2ad8ded8dd02f5e86b9b84994fbf09/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/nick/.gradle/caches/transforms-3/89b41710f2d91b58625f9b5694ae9564/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/nick/.gradle/caches/transforms-3/89b41710f2d91b58625f9b5694ae9564/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nick/.gradle/caches/transforms-3/9a6807a9c9e8c5a1572e7ea1a59437dd/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nick/.gradle/caches/transforms-3/9a6807a9c9e8c5a1572e7ea1a59437dd/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nick/.gradle/caches/transforms-3/e60d9b0e3c0f13e0655ea89562f1a60f/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nick/.gradle/caches/transforms-3/e60d9b0e3c0f13e0655ea89562f1a60f/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/nick/.gradle/caches/transforms-3/311f74372c729a2210db475d77740267/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/nick/.gradle/caches/transforms-3/311f74372c729a2210db475d77740267/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/nick/.gradle/caches/transforms-3/ad6d5a2adf312d65183193700fe9970a/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/nick/.gradle/caches/transforms-3/ad6d5a2adf312d65183193700fe9970a/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] /home/nick/.gradle/caches/transforms-3/f0ea38471dbdf8dc8d8867a3e8452d8b/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/nick/.gradle/caches/transforms-3/f0ea38471dbdf8dc8d8867a3e8452d8b/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.5.0] /home/nick/.gradle/caches/transforms-3/cb0ec623bdc10bc63d1b95e97c599215/transformed/core-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.5.0] /home/nick/.gradle/caches/transforms-3/cb0ec623bdc10bc63d1b95e97c599215/transformed/core-1.5.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nick/.gradle/caches/transforms-3/7d69d88f3a0918321725d811b9ce5d98/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nick/.gradle/caches/transforms-3/7d69d88f3a0918321725d811b9ce5d98/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /home/nick/.gradle/caches/transforms-3/a5c67f1adad571f09fc2ed525eb3b569/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /home/nick/.gradle/caches/transforms-3/a5c67f1adad571f09fc2ed525eb3b569/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /home/nick/.gradle/caches/transforms-3/40436f9aee1a76ad1fc1de2d67e1425a/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] /home/nick/.gradle/caches/transforms-3/40436f9aee1a76ad1fc1de2d67e1425a/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /home/nick/.gradle/caches/transforms-3/560804d170b54a9fdf12cc82762cb264/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /home/nick/.gradle/caches/transforms-3/560804d170b54a9fdf12cc82762cb264/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /home/nick/.gradle/caches/transforms-3/42a0b0d0b6d0e6cc52ffe7b992e7661e/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /home/nick/.gradle/caches/transforms-3/42a0b0d0b6d0e6cc52ffe7b992e7661e/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /home/nick/.gradle/caches/transforms-3/53a12f004e178d385f35733c7fbc5b57/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/nick/.gradle/caches/transforms-3/53a12f004e178d385f35733c7fbc5b57/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/nick/.gradle/caches/transforms-3/b30e4a71c1ef964af839d7f64f4d438c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/nick/.gradle/caches/transforms-3/b30e4a71c1ef964af839d7f64f4d438c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/nick/.gradle/caches/transforms-3/24180a40e1bc149483e70d46cdf73c21/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /home/nick/.gradle/caches/transforms-3/24180a40e1bc149483e70d46cdf73c21/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nick/.gradle/caches/transforms-3/30c95a16d9e13a9f4463da43c90d7507/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nick/.gradle/caches/transforms-3/30c95a16d9e13a9f4463da43c90d7507/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /home/nick/.gradle/caches/transforms-3/78db385f9695e7bb3111b6fdfc31ff41/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /home/nick/.gradle/caches/transforms-3/78db385f9695e7bb3111b6fdfc31ff41/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/nick/.gradle/caches/transforms-3/b9bf066d9578acdccc901806ed543a19/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/nick/.gradle/caches/transforms-3/b9bf066d9578acdccc901806ed543a19/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nick/.gradle/caches/transforms-3/8e118cd241a5493145339244441866ba/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nick/.gradle/caches/transforms-3/8e118cd241a5493145339244441866ba/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nick/.gradle/caches/transforms-3/eddc99a47fe3d0e1edb4c9b3001ebc3f/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nick/.gradle/caches/transforms-3/eddc99a47fe3d0e1edb4c9b3001ebc3f/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nick/.gradle/caches/transforms-3/12b5734e0bba8b9d92f2db2e4c0d216c/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nick/.gradle/caches/transforms-3/12b5734e0bba8b9d92f2db2e4c0d216c/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/nick/.gradle/caches/transforms-3/2fb391339688505a99752613cb520ec1/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/nick/.gradle/caches/transforms-3/2fb391339688505a99752613cb520ec1/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/nick/.gradle/caches/transforms-3/f1dad7d723938805243be1b3a061f621/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /home/nick/.gradle/caches/transforms-3/f1dad7d723938805243be1b3a061f621/transformed/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/nick/.gradle/caches/transforms-3/cf923ef056cda39007801f2acf5f3dd5/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:5:5-43
+MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/nick/.gradle/caches/transforms-3/cf923ef056cda39007801f2acf5f3dd5/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:5:5-43
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:11:5-13:40
+INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:11:5-13:40
+	android:targetSdkVersion
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:13:9-38
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:12:9-35
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+		INJECTED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:15:5-75
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:15:22-73
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:16:5-78
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:16:22-76
+uses-permission#android.permission.CHANGE_WIFI_MULTICAST_STATE
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:17:5-85
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:17:22-83
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:18:5-78
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:18:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:19:5-75
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:19:22-73
+uses-permission#android.permission.USE_FINGERPRINT
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:20:5-74
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:20:22-71
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:21:5-75
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:21:22-72
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:22:5-67
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:22:22-65
+uses-permission#android.permission.INTERNET
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:23:5-66
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:23:22-64
+uses-permission#android.permission.VIBRATE
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:24:5-65
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:24:22-63
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:25:5-78
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:25:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:26:5-80
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:26:22-78
+uses-permission#android.permission.CAMERA
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:27:5-64
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:27:22-62
+uses-feature#android.hardware.camera
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:28:5-59
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:28:19-57
+uses-feature#android.hardware.camera.autofocus
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:29:5-69
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:29:19-67
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:30:5-80
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:30:22-78
+uses-permission#android.permission.FLASHLIGHT
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:31:5-68
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:31:22-66
+uses-permission#android.permission.GET_TASKS
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:32:5-67
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:32:22-65
+application
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:35:5-94:19
+MERGED from [com.google.android.material:material:1.3.0] /home/nick/.gradle/caches/transforms-3/0e7de19a25ae133037ce2e6af69f2347/transformed/material-1.3.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.3.0] /home/nick/.gradle/caches/transforms-3/0e7de19a25ae133037ce2e6af69f2347/transformed/material-1.3.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/nick/.gradle/caches/transforms-3/8dfa9c1ed714f87bec8a9d47f00598f7/transformed/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /home/nick/.gradle/caches/transforms-3/8dfa9c1ed714f87bec8a9d47f00598f7/transformed/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.5.0] /home/nick/.gradle/caches/transforms-3/cb0ec623bdc10bc63d1b95e97c599215/transformed/core-1.5.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.5.0] /home/nick/.gradle/caches/transforms-3/cb0ec623bdc10bc63d1b95e97c599215/transformed/core-1.5.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/nick/.gradle/caches/transforms-3/b30e4a71c1ef964af839d7f64f4d438c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/nick/.gradle/caches/transforms-3/b30e4a71c1ef964af839d7f64f4d438c/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:40:9-42
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.5.0] /home/nick/.gradle/caches/transforms-3/cb0ec623bdc10bc63d1b95e97c599215/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:37:9-41
+	android:icon
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:38:9-45
+	android:allowBackup
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:39:9-35
+	android:theme
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:36:9-40
+	android:usesCleartextTraffic
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:41:9-44
+uses-library#org.apache.http.legacy
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:43:9-45:39
+	android:required
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:45:13-37
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:44:13-50
+service#com.demo.smarthome.service.SocketService
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:46:9-75
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:46:18-73
+activity#com.demo.smarthome.activity.WelcomeActivity
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:47:9-50:51
+	android:screenOrientation
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:50:13-49
+	android:launchMode
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:49:13-44
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:48:13-71
+activity#com.demo.smarthome.activity.UserLinkActivity
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:51:9-53:51
+	android:screenOrientation
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:53:13-49
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:52:13-72
+activity#com.demo.smarthome.activity.SsidListAct
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:54:9-75
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:54:19-73
+activity#com.espressif.iot.esptouch.demo_activity.EsptouchDemoActivity
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:55:9-57:51
+	android:screenOrientation
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:57:13-49
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:56:13-89
+activity#io.dcloud.PandoraEntry
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:58:9-70:20
+	android:screenOrientation
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:63:13-49
+	android:launchMode
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:62:13-44
+	android:windowSoftInputMode
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:65:13-55
+	android:exported
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:61:13-36
+	android:configChanges
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:64:13-63
+	android:theme
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:59:13-44
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:60:13-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:66:13-69:29
+action#android.intent.action.MAIN
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:67:17-68
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:67:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:68:17-76
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:68:27-74
+activity#io.dcloud.PandoraEntryActivity
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:71:9-78:49
+	android:screenOrientation
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:75:13-49
+	android:launchMode
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:74:13-44
+	android:hardwareAccelerated
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:78:13-47
+	android:windowSoftInputMode
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:77:13-55
+	android:configChanges
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:76:13-74
+	android:theme
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:72:13-47
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:73:13-58
+service#io.dcloud.common.adapter.io.MiniServerService
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:79:9-81:38
+	android:exported
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:81:13-36
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:80:13-73
+meta-data#com.android.dynamic.apk.fused.modules
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:82:9-84:35
+	android:value
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:84:13-33
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:83:13-65
+meta-data#com.android.stamp.source
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:85:9-87:60
+	android:value
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:87:13-58
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:86:13-52
+meta-data#com.android.stamp.type
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:88:9-90:56
+	android:value
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:90:13-54
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:89:13-50
+meta-data#com.android.vending.splits
+ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:91:9-93:46
+	android:resource
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:93:13-44
+	android:name
+		ADDED from /mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:92:13-54

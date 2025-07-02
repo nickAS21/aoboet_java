@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style type="text/css">
+    	html,body{height: 100%;}
+    	body{background: #eeeeee;}
+    	.mui-content{background: #eeeeee;height: 100%;}
+    	.mui-table-view{padding: 0% 20px;background: #eeeeee;}
+    	.mui-table-view:after{background: none;}
+    	.mui-table-view li{background: #FFFFFF;}
+    	.mui-table-view .mui-media-object{height: 30px;}
+    	.mui-table-view-cell{padding: 13px;margin-bottom: 20px;}
+    	.mui-table-view-cell:after{height: 0px;}
+    	body .mui-table-view .mui-media-body{line-height: 30px;text-align: center;color: #707070;font-size: 18px;padding-right: 20px;}
+    	.pic{width: 100%; height: 0px;padding-top: 17%;background-image: url(img/pic.png);background-position: center;background-repeat: no-repeat;background-size: cover;}
+    	.mui-navigate-right:after{right: 0px; font-size: 34px;}
+    	body .mui-btn:enabled{border: 1px solid #cbcbca; background-color: #cbcbca;}
+    	.mui-table-view-cell>a:not(.mui-btn).mui-active{background-color: #CBCBCB;}
+    	.mui-table-view-cell>a:not(.mui-btn){margin: -13px;}
+    	body .mui-btn:enabled:active{background-color: #216297;color: #cbcbcb;}
+    	.mui-table-view-cell:last-child{margin-bottom: 0px;}
+    	.space{width: 100%;height: 13%;}
+    	.mui-table-view:before{background-color: rgba(0,0,0,0);}
+    </style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-slider">
+		  <div class="mui-slider-group">
+		    <!--支持循环，需要重复图片节点-->
+		    <!--<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="img/pic2.png" /></a></div>-->
+		    <!--<div class="mui-slider-item"><a href="#"><img src="img/pic1.png" /></a></div>-->
+		    <div class="mui-slider-item"><a href="#"><img src="img/pic2.png" /></a></div>
+		    <!--<div class="mui-slider-item"><a href="#"><img src="img/pic3.png" /></a></div>-->
+		    <!--支持循环，需要重复图片节点-->
+		    <!--<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="img/pic2.png" /></a></div>-->
+		  </div>
+		</div>
+		<div class="space"></div>
+		<ul class="mui-table-view">
+		    <li class="mui-table-view-cell mui-media" id="Q_A">
+		        <a class="mui-navigate-right">
+		            <img class="mui-media-object mui-pull-left" src="img/QA.png">
+		            <div class="mui-media-body">
+						Troubleshooting
+		            </div>
+		        </a>
+		    </li>
+		    <li class="mui-table-view-cell mui-media" id="contact">
+		        <a class="mui-navigate-right">
+		            <img class="mui-media-object mui-pull-left" src="img/contact.png">
+		            <div class="mui-media-body">
+						Contact us
+		            </div>
+		        </a>
+		    </li>
+		     <li class="mui-table-view-cell mui-media" id="person">
+		        <a class="mui-navigate-right">
+		            <img class="mui-media-object mui-pull-left" src="img/user.png">
+		            <div class="mui-media-body">
+						Personal
+		            </div>
+		        </a>
+		    </li>
+		</ul>
+		<div class="space"></div>
+		<div style="padding: 0px 20px;">
+			<button type="button" class="mui-btn mui-btn-primary mui-btn-block" id="logout">Exit</button>
+		</div>
+	</div>
+</body>
+
+<script src="js/common.js"></script>
+<script type="text/javascript" charset="utf-8">
+window.addEventListener('helt.html',function(event){
+});
+mui.init();
+mui.plusReady(function(){
+	mui('body').on('touchend','#logout',function(){
+		plus.storage.removeItem("uid");
+		plus.storage.removeItem("gid");
+		var allweb = plus.webview.all();
+		for (var i = 0; i < allweb.length; i++) {
+			if(allweb[i].id != "H5057CD3A"){
+				plus.webview.close(allweb[i].id);
+			}
+		}
+		mui.openWindow({
+		    url:"login.html",
+		    id:"login.html",
+		});
+	});
+	
+	mui('body').on('touchend','#Q_A',function(){
+		mui.openWindow({
+			url:'http://47.98.105.69:38080/php/q_a.html',
+		    id:"q_a.html",
+		    styles:{
+		    	top:"0px",
+		    	bottom:"60px"
+		    }
+		});
+	});
+	
+	mui('body').on('touchend','#contact',function(){
+		mui.openWindow({
+		    url:"http://47.98.105.69:38080/php/contact.html?number="+plus.storage.getItem("hid"),
+		    id:"contact.html",
+		    styles:{
+		    	top:"0px",
+		    	bottom:"60px"
+		    }
+		});
+	});
+	mui('body').on('touchend','#person',function(){
+		mui.openWindow({
+		    url:"http://47.98.105.69:38080/php/person.html?number="+plus.storage.getItem("hid")+"&userid="+plus.storage.getItem("uid"),
+		    id:"person.html",
+		    styles:{
+		    	top:"0px",
+		    	bottom:"0px"
+		    }
+		});
+	});
+});
+</script>
+</html>

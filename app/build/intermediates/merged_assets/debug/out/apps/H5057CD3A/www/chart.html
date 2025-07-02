@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+    <style type="text/css">
+    html,body{height: 100%;}
+	body,.mui-content{background-color: #EEEEEE;text-align: center;height: 100%;}
+	.mui-segmented-control.chart_tab{background-color: #FFFFFF;border: none;border-radius: 0;padding-top: 10px;}
+	.mui-segmented-control.chart_tab .mui-control-item{border: none;color: #444444;font-size: 14px;vertical-align: middle;
+		line-height: 1.3;padding-bottom: 8px;height: 45px;}
+	.mui-segmented-control.chart_tab .mui-control-item.mui-active{background: none;color: rgb(51,116,180);position: relative;}
+	.mui-segmented-control.chart_tab .mui-control-item.mui-active:after{
+		content: " ";display: block;position: absolute;width: 70%;height: 5px;background: rgb(51,116,180);bottom: 0;margin-left: 15%;
+	}
+	.mui-segmented-control.chart_tab .mui-control-item.single:after{
+		width: 24%;margin-left: 38%;
+	}
+	.mui-segmented-control.charge{
+		width: 308px;margin: auto;border-radius: 0px;background: rgb(203,203,203);border: none;display: none;margin-top: 15px;
+	}
+	.mui-segmented-control.charge .mui-control-item{
+		border: none;color: #444444;font-size: 18px;border-left: 1px solid #ffffff;width: 33%;
+	}
+	.mui-segmented-control.charge .mui-control-item:first-child{
+		border-left: 1px solid #cbcbcb;
+	}
+	.mui-segmented-control.charge .mui-control-item.mui-active{
+		color: #FFFFFF;
+		background: #002870;
+		border-left: 1px solid #002870;
+	}
+	.mui-segmented-control.charge .mui-control-item.mui-active + .mui-control-item{
+		border-left: 1px solid #cbcbcb;
+	}
+	#show_date{width: 229px;margin: auto;margin-top: 15px;position: relative;font-size: 18px;border-radius: 0px;
+		border-top: 1px solid #999999;border-bottom: 1px solid #999999;background: #FFFFFF;border-left: 1px solid #002870;border-right: 1px solid #002870;
+		-webkit-transition-duration: 0s;transition-duration: 0s;}
+	#show_date .mui-icon{position: absolute; right: 8px;top: 2px;font-size: 1.5em;background-image: url(img/arrow_down.png);
+		width: 32px;height: 32px;background-size: 60%;background-repeat: no-repeat;background-position: center;}
+	#show_date #before_day,#show_date #before{background-image: url(img/arrow_left_right.png);width: 39px;height: 39px;background-position: 0px 0px;
+		display: block;position: absolute;left: -40px;top: -1px;z-index: 1;cursor: pointer;background-size: 200%;}
+	#show_date #next_day,#show_date #next{background-image: url(img/arrow_left_right.png);width: 39px;height: 39px;background-position: -39px 0px;
+		display: block;position: absolute;right: -40px;top: -1px;z-index: 1;cursor: pointer;background-size: 200%;}
+	.chart_box{width: 96%;margin:40px 2% 15px;height: 50%;}
+    </style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-segmented-control chart_tab">
+		    <a class="mui-control-item mui-active" id="vol_tab" data-type="volt">Voltage</a>
+		    <a class="mui-control-item _auth_admin" data-type="charge">Charge</a>
+		    <a class="mui-control-item _auth_admin" data-type="discharge">Discharge</a>
+		</div>
+		<div class="chart_box" id="container"></div>
+		<div class="mui-segmented-control charge" id="charge_tab">
+		    <a class="mui-control-item mui-active" data-during = "day">Day</a>
+		    <a class="mui-control-item" data-during = "month">Month</a>
+		    <a class="mui-control-item" data-during = "year">Year</a>
+		</div>
+		<button type="button" class="mui-btn" data-options='{"type":"date"}' id="show_date">
+			<span id="before_day"></span>
+			<span id="date"></span>
+			<span class="mui-icon"></span>
+			<span id="next_day"></span>
+		</button>
+	</div>
+</body>
+
+<script src="js/jquery-3.6.1.min.js"></script>
+<script src="js/highcharts.js"></script>
+<script src="js/common.js"></script>
+
+<script src="js/mui.picker.all.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+var hid;
+var charge_tab = document.getElementById("charge_tab");
+var date_box = document.getElementById("show_date");
+var charge_during = "";
+var chart_type = "";
+var chart_datetime = "";
+var view = "date";
+var xtitle = "(Hour)";
+
+ //获取本地时区，判断如果是负的则相加得到格林尼治时间，正的则相减
+
+var localTM=-8;
+/**
+ * 绘制line图
+ * @param {Object} data
+ */
+function chartV(data){
+	if(data.length > 0){
+		var chart_data = [];
+		for (var i = 0; i < data.length; i++) {
+			chart_data[i] = data[i].value.V;
+	    }
+		$('#container').highcharts({
+	        chart: {
+	            type: 'area',
+	            backgroundColor: 'rgba(0,0,0,0)'
+	        },
+	        title: {
+	            text: null
+	        },
+	        legend: {
+	        	enabled : false,
+	        },
+	        credits : {
+	        	enabled : false,
+	        },
+	        exporting : {
+	        	enabled : false,
+	        },
+	        tooltip: {
+	            enabled: false
+	        },
+	        xAxis: {
+	        	tickAmount: data.length,
+	        	tickInterval: 1,
+	        	tickLength : 0,
+	        	labels:{
+	        		step : 2,
+	        		formatter : function(){
+	        			return this.value;
+	        		}
+	        	},
+	            gridLineColor: '#999999',
+            	gridLineWidth: 1,
+            	lineColor : "#999999",
+				title: {
+	                text: '(Hour)'
+	            }
+	        },
+	        yAxis: {
+	            title: {
+	                text: '(V)'
+	            },
+	            labels:{
+	        		x: -5,
+	        	},
+	            tickAmount: 6,
+	            tickLength : 0,
+	            gridLineColor: '#999999',
+            	gridLineWidth: 1,
+            	lineColor : "#999999"
+	        },
+	        plotOptions: {
+	            area: {
+	                marker: {
+	                    enabled: false,
+	                    states: {
+	                        hover: {
+	                            enabled: false
+	                        },
+	                    }
+	                }
+	            },
+	            series: {
+		            enableMouseTracking: false
+		        }
+	        },
+	        series: [{
+	            name: null,
+	            data: chart_data,
+	            color: '#002870',
+	            lineWidth : 0,
+	            animation: false
+	        }]
+	    });
+	}
+}
+
+/**
+ * 绘制bar图
+ * @param {Object} data
+ */
+function chartCharge(data){
+	if(data.length > 0){
+		var step;
+		if(charge_during == "year"){
+			step = 1;
+		}else{
+			step = 2;
+		}
+		var chart_data = [];
+		for (var i = 0; i < data.length; i++) {
+			if(chart_type == "charge"){
+				chart_data[i] = data[i].value.day_charge;
+	    	}else if(chart_type == "discharge"){
+	    		chart_data[i] = data[i].value.day_discharge;
+	    	}
+	    }
+		$('#container').highcharts({
+	        chart: {
+	            type: 'column',
+	            backgroundColor: 'rgba(0,0,0,0)'
+	        },
+	        title: {
+	            text: null
+	        },
+	        legend: {
+	        	enabled : false,
+	        },
+	        credits : {
+	        	enabled : false,
+	        },
+	        exporting : {
+	        	enabled : false,
+	        },
+	        tooltip: {
+	            enabled: false
+	        },
+	        xAxis: {
+			 title: {
+		                text: xtitle
+		            },
+	        	tickAmount: data.length,
+	        	tickInterval: 1,
+	        	tickLength : 0,
+	        	labels:{
+	        		step : step,
+	        		formatter : function(){
+	        			if(charge_during == "day"){
+	        				return this.value;
+	        			}else{
+	        				return this.value+1;
+	        			}
+	        		}
+	        	},
+	            gridLineColor: '#999999',
+            	gridLineWidth: 0,
+            	lineColor : "#999999"
+	        },
+	        yAxis: [
+	        	{
+		            title: {
+		                text: '(kWh)'
+		            },
+		            labels:{
+		        		x: -5,
+		        	},
+		            tickAmount: 6,
+		            tickLength : 0,
+		            gridLineColor: '#999999',
+	            	gridLineWidth: 1,
+	            	lineWidth : 1,
+	            	lineColor : "#999999"
+		        },{
+		            lineWidth: 1,
+		            lineColor : "#999999",
+		            opposite: true,
+		            title: {
+		                text: null
+		        	}
+		        }
+		    ],
+	        plotOptions: {
+	        	column: {
+	        		borderWidth: 0
+	        	},
+	            series: {
+		            enableMouseTracking: false
+		        }
+	        },
+	        series: [{
+	            name: null,
+	            data: chart_data,
+	            color: '#002870',
+	            animation: false
+	        }]
+	    });
+	}
+}
+
+/**
+ * 重置时间选择框
+ */
+function resetDate () {
+	var current = "";
+	if(chart_type == "volt"){
+		view = "date";
+		current = new Date().format("yyyy-MM-dd");
+	}else if(chart_type != "volt"){
+		if(charge_during == "day"){
+		xtitle = "(Hour)";
+			view = "date";
+			current = new Date().format("yyyy-MM-dd");
+		}
+		if(charge_during == "month"){
+			xtitle = "(Day)";
+			view = "month";
+			current = new Date().format("yyyy-MM");
+		}
+		if(charge_during == "year"){
+		xtitle = "(Month)";
+			view = "year";
+			current = new Date().format("yyyy");
+		}
+	}
+	
+	document.getElementById("show_date").setAttribute("data-options",'{"type":"'+view+'"}');
+	document.getElementById("date").innerText = current;
+	setChartParam();
+    getChartData();
+}
+
+/**
+ * 设置图表数据参数
+ */
+function setChartParam() {
+	var chart_tab = document.getElementsByClassName("chart_tab");
+	var chart_tab_active = chart_tab[0].getElementsByClassName("mui-active");
+	chart_type = chart_tab_active[0].getAttribute("data-type");
+	chart_datetime = document.getElementById("date").innerText;
+	var charge = document.getElementsByClassName("charge");
+	var charge_active = charge[0].getElementsByClassName("mui-active");
+	charge_during = charge_active[0].getAttribute("data-during");
+}
+
+/**
+ * 获取图表数据
+ */
+function getChartData () {
+	var url = "";
+	var data = {};
+	var volt_url = "http://"+C.host+":"+C.port+"/index.php?m=Api&c=Device&a=chart";
+	var charge_url = "http://"+C.host+":"+C.port+"/index.php?m=Api&c=Device&a=chartCharge";
+	if(chart_type == "volt"){
+		url = volt_url;
+		data = {hid:hid,date:chart_datetime,timezone:localTM};
+	}else{
+		url = charge_url;
+		data = {hid:hid,during:charge_during,datetime:chart_datetime,timezone:localTM};
+	}
+	mui.getJSON(url,data,function(json){
+		drawChart(json.data);
+	});
+}
+
+/**
+ * 绘制图表
+ * @param chart_data
+ */
+function drawChart(chart_data){
+	if(chart_type == "volt"){
+		chartV(chart_data);
+	}else{
+		chartCharge(chart_data);
+	}
+}
+
+function checkAuthShow () {
+	var gid = plus.storage.getItem("gid");
+	var _auth_admin_list = document.querySelectorAll("._auth_admin");
+	for (var i = 0; i < _auth_admin_list.length; i++) {
+		if(gid == 1){
+			_auth_admin_list[i].style.display = "table-cell";
+		}else{
+			document.getElementById("vol_tab").classList.add("single");
+			_auth_admin_list[i].style.display = "none";
+		}
+	}
+}
+
+window.addEventListener('chart.html',function(event){
+	setChartParam();
+	resetDate();
+});
+
+mui.init();
+mui.plusReady(function(){
+	
+	//checkAuthShow();
+	
+	hid = plus.storage.getItem("hid");
+   var NSTimeZone = plus.android.importClass("java.util.TimeZone");
+   var tz = NSTimeZone.getDefault().getRawOffset();
+   localTM = -tz/(3600*1000);
+	//plus.nativeUI.toast(plus.storage.getItem("timezone"););
+	//tab切换
+	mui('.mui-segmented-control').off('tap', 'a');
+	mui('.mui-segmented-control').on('tap', 'a', function(e) {
+		mui.later(function(){//等tab切换完
+			setChartParam();
+			if(chart_type != "volt"){
+				date_box.style.background = "#FFFFFF";
+				date_box.style.color = "#333333";
+				date_box.style.borderTop = "1px solid #999999";
+				date_box.style.borderBottom = "1px solid #999999";
+				charge_tab.style.display ="table";
+			}else{
+				date_box.style.background = "#FFFFFF";
+				date_box.style.color = "#333333";
+				date_box.style.borderTop = "1px solid #999999";
+				date_box.style.borderBottom = "1px solid #999999";
+				charge_tab.style.display ="none";
+			}
+			resetDate();
+		},200);
+	});
+	
+	mui("body").on('tap',"#next_day",function(e){
+		e.stopPropagation();
+    	var current = new Date(document.getElementById("date").innerText);
+    	if(view == "date"){
+    		current.setDate(current.getDate()+1);
+    		document.getElementById("date").innerText = current.format("yyyy-MM-dd");
+    	}else if(view == "month"){
+    		current.setMonth(current.getMonth()+1);
+    		document.getElementById("date").innerText = current.format("yyyy-MM");
+    	}else if(view == "year"){
+    		current.setFullYear(current.getFullYear()+1);
+    		document.getElementById("date").innerText = current.format("yyyy");
+    	}
+		setChartParam();
+	    getChartData();
+    });
+    
+    mui("body").on('tap',"#before_day",function(e){
+    	e.stopPropagation();
+    	var current = new Date(document.getElementById("date").innerText);
+    	if(view == "date"){
+    		current.setDate(current.getDate()-1);
+    		document.getElementById("date").innerText = current.format("yyyy-MM-dd");
+    	}else if(view == "month"){
+    		current.setMonth(current.getMonth()-1);
+    		document.getElementById("date").innerText = current.format("yyyy-MM");
+    	}else if(view == "year"){
+    		current.setFullYear(current.getFullYear()-1);
+    		document.getElementById("date").innerText = current.format("yyyy");
+    	}
+		setChartParam();
+	    getChartData();
+    });
+	
+	mui('body').on('tap','#show_date',function(){
+		var optionsJson = this.getAttribute('data-options') || '{}';
+		var options = JSON.parse(optionsJson);
+		var picker = new mui.DtPicker(options);
+		picker.show(function(rs) {
+			document.getElementById("date").innerText = rs.text;
+			setChartParam();
+    		getChartData();
+			picker.dispose();
+		});
+	});
+//	var TimeZone = plus.android.importClass('java.util.TimeZone');
+//	var tz = TimeZone.getDefault().getRawOffset();
+//	localTM= -tz/(3600*1000);
+});
+</script>
+</html>

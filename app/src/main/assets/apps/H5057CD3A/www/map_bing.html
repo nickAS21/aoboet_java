@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>
+<title>Map</title>
+<script src="js/mui.min.js"></script>
+<link href="css/mui.css" rel="stylesheet"/>
+<style type="text/css">
+	body, html {width: 100%;height: 100%;margin:0;font-family:helvetica;}
+	.mui-bar{height: 55px;padding-top: 5px;}
+	.mui-bar-nav.mui-bar .mui-icon.mui-icon-back:before{content: ' ';}
+	.mui-bar-nav.mui-bar .mui-icon.mui-icon-back{background-image: url(img/arrow_back.png);background-position: center;
+		background-repeat: no-repeat;background-size: 50%;width: 44px;height: 44px;}
+	.mui-bar-nav.mui-bar .mui-icon.mui-icon-more:before{content: ' ';}
+	.mui-bar-nav.mui-bar .mui-icon.mui-icon-more{background-image: url(img/more.png);background-position: center;
+	background-repeat: no-repeat;background-size: 50%;width: 44px;height: 44px;}
+	#map{width:100%;height:100%;}
+	.mui-off-canvas-left, .mui-off-canvas-right{background: none;}
+	.mui-table-view-cell{font-size: 18px;color: #FFFFFF;padding: 10px 12px;}
+	.mui-table-view-cell:after{left: 0px;}
+	.mui-navigate-right:after, .mui-push-left:after, .mui-push-right:after{font-size: 24px;right: 10px;}
+	.mui-table-view-cell>a:not(.mui-btn){margin: -10px -12px;}
+	.mui-off-canvas-wrap.mui-active .mui-off-canvas-backdrop{background: none;}
+	.mui-table-view{background: none;}
+	.mui-table-view-cell>a:not(.mui-btn).mui-active{background: none;}
+	.screen_box{color: #333333;}
+	.screen_box button{position: absolute;right: 10px;background: none;top: 8px;border: 0; font-size: 20px;padding: 0 10px; display: none;}
+	.screen_box button._show{display: block;}
+	#screen_number{background: #eeeeee;border: 1px solid #999999;border-radius: 50px;height: 30px;padding: 5px 12px;margin-bottom: 0px;}
+	.mui-off-canvas-left, .mui-off-canvas-right{width: 240px;}
+	.mui-table-view:before{background-color: #000000;}
+	.list_arrow_up{background-image: url(img/arrow_up_map_list.png);background-position: center;background-repeat: no-repeat;background-size: 100%;
+		width: 30px;height: 15px;position: absolute;top: 41px;right: 8px;z-index: 1;}
+	.info_window_close{background-image:url(http://47.52.117.177:80/Public/img/google_map_remove2.jpg);display:block;position:absolute;
+		width:20px;height:20px;z-index:999999;right: -5px;top: 0px;background-size: cover;background-repeat: no-repeat;cursor: pointer;}
+	.gm-style .gm-style-iw{overflow: visible!important;}
+	/* CSS styles used by custom infobox template */
+	.customInfobox {
+		background-color: rgba(0,0,0,0.5);
+	    color: white;
+	    max-width: 200px;
+	    border-radius: 10px;
+	    padding: 10px;
+	    font-size:12px;
+	    pointer-events:auto !important;
+	}
+</style>
+</head>
+<body>
+
+<!-- 主界面不动、菜单移动 -->
+<!-- 侧滑导航根容器 -->
+<div class="mui-off-canvas-wrap mui-slide-in">
+  <!-- 菜单容器 -->
+  <aside class="mui-off-canvas-right" id="offCanvasSide">
+    <div class="mui-scroll-wrapper _scroll_box" style="top: 55px;">
+      <div class="mui-scroll">
+      	<div class="mui-table-view-cell screen_box" style="padding: 8px 12px;background: rgba(0,0,0,0.5);">
+    		<input type="text" id="screen_number" value="" placeholder="Secondary agent" />
+    		<button id="screen_search" class="_show"><span class="mui-icon mui-icon-search"></span></button>
+    		<button id="screen_remove"><span class="mui-icon mui-icon-closeempty"></span></button>
+    	</div>
+        <!-- 菜单具体展示内容 -->
+        <ul class="mui-table-view" id="h_list" style="background: rgba(0,0,0,0.5);">
+		</ul>
+      </div>
+    </div>
+    <span class="list_arrow_up"></span>
+  </aside>
+  <!-- 主页面容器 -->
+  <div class="mui-inner-wrap" id="mui-inner-wrap">
+    <!-- 主页面标题 -->
+    <header class="mui-bar mui-bar-nav">
+      	<a class="mui-icon mui-icon-back mui-pull-left mui-action-back"></a>
+	    <h1 class="mui-title">Map</h1>
+	    <a class="mui-icon mui-action-menu mui-icon-more mui-pull-right" href="#offCanvasSide"></a>
+    </header>
+    <div class="mui-content mui-scroll-wrapper">
+      <div class="mui-scroll" style="height: 100%;">
+        <!-- 主界面具体展示内容 -->
+        <div id="map"></div>
+      </div>
+    </div>  
+    <div class="mui-off-canvas-backdrop"></div>
+  </div>
+  
+</div>
+
+<script src="js/common.js"></script>
+<script type="text/javascript">
+    
+var HLH_list_url = "http://"+C.host+":"+C.port+"/index.php?s=/Api/Device/listByDistributorId2.html";
+
+//添加此函数是为了防止Google地图只显示最后一个信息窗口
+function setListenerAndInfowindow(marker,content,infowindow,map){
+	marker.addListener('click', function() {
+		infowindow.setContent(content);
+	    infowindow.open(map, marker);
+	});
+	mui('body').off('tap','.info_window_close');
+	mui('body').on('tap','.info_window_close',function(){
+		infowindow.close();
+	});
+}
+
+
+// google地图API功能
+function initMap() {
+	//获取所有点
+	var _json = JSON.parse(plus.storage.getItem("map_point"));
+  
+	var default_point = new Microsoft.Maps.Location(47.6149, -122.1941);//{lat: 31.365854, lng: 120.438732};
+    
+	//设置地图中心点
+	if(_json.data.length > 0){
+        var havenum=0;
+        for (var i = 0; i < _json.data.length; i++) {
+            if(_json.data[i].latitude && _json.data[i].longitude){
+                havenum=i;
+                break;
+            }
+        }
+        default_point.lat = parseFloat(_json.data[havenum].latitude);
+        default_point.lng = parseFloat(_json.data[havenum].longitude);                                                
+	}
+	
+	//显示地图
+	var map = new Microsoft.Maps.Map('#map');
+	
+	//添加汇流盒标记
+	var icon = "http://"+C.host+":"+C.port+"/Public/img/market_icon_s.png";
+	
+	//Create an infobox at the center of the map but don't show it.
+	// var infobox = new Microsoft.Maps.Infobox(map.getCenter(), {
+	//     visible: false,
+	// 	map: map
+	// });
+	
+	for (var i = 0; i < _json.data.length; i++) {
+		if(_json.data[i].latitude && _json.data[i].longitude){
+			
+
+			var location = new Microsoft.Maps.Location(
+			parseFloat(_json.data[i].latitude), 
+			parseFloat(_json.data[i].longitude));
+			
+			// var content = '<div class = "customInfobox" onclick="show_detail(\''+_json.data[i].number+'\')">'+
+			// 	'<h4 class="t" style="font-weight:normal">'+_json.data[i].number+'</h4>'+
+			// 	'<p style="height:3em;width:200px;">'+_json.data[i].addr+'</p>'+
+			// 	'</div>'+
+			// 	'<span class="info_window_close"></span>';
+			
+			var pin = new Microsoft.Maps.Pushpin(location, {
+			  icon: icon,
+			  // metadata: {
+			  //   title: 'Pin ' + i,
+			  //   description: 'Discription for pin' + i
+			// }
+			});		
+			
+			//Add a click event handler to the pushpin.
+			// new Microsoft.Maps.Events.addHandler(pin, 'click', function(e){
+			// 	if (e.target.metadata) {
+			// 		infobox.setOptions({
+			// 		    location:e.target.location,
+			// 			title: e.target.title,
+			// 			description: e.target.description,
+			// 		    visible: true,
+						
+			// 		});
+			// 	}
+				
+			// });
+			
+			map.entities.push(pin);
+			
+		}
+	}
+}
+
+/**
+ * 进入index框架
+ * @param {Object} hid
+ */
+function show_detail(hid){
+	mui.openWindow({
+	    url:"index.html",
+	    id:"index.html",
+	    createNew:true,
+	    extras:{
+	      hid:hid
+	    },
+	});
+}
+
+function menuList (data) {
+	var Hlist_node = document.getElementById("h_list");
+
+	var hs = [];
+	var lengthxx = 0;
+	if (data.length>=500) {
+		lengthxx = 500;
+	} else{
+		lengthxx = data.length;
+	}
+	for(var i=0;i<lengthxx;i++){
+		//mui.alert(data[i].client_id.length,"Error","ok",null,"div");
+//		var new_li = '<li class="mui-table-view-cell" hid="'+data[i].number+'"><a class="mui-navigate-right">'+data[i].number+'<br /></a></li>';
+//		Hlist_node.innerHTML += new_li;
+		
+		var new_li='';
+		
+		if(data[i].client_id.length==0){
+			new_li= '<li class="mui-table-view-cell" style="color:#999999" hid="'+data[i].number+'"><a class="mui-navigate-right">'+data[i].number+'<br /></a></li>';
+		}
+		if(data[i].client_id.length==1){
+			new_li= '<li class="mui-table-view-cell" style="color:#CCCCCC" hid="'+data[i].number+'"><a class="mui-navigate-right">'+data[i].number+'<br /></a></li>';
+		}
+		if(data[i].client_id.length==20){
+			 new_li = '<li class="mui-table-view-cell" hid="'+data[i].number+'"><a class="mui-navigate-right">'+data[i].number+'<br /></a></li>';
+		}
+		//Hlist_node.innerHTML += new_li;
+		hs.push(new_li);
+	}
+	// if (data.length >= 200) {
+	//    hs.push('<li class="mui-table-view-cell" style="color:white">...</li>');
+	// }
+	Hlist_node.innerHTML = hs.join("");
+	plus.nativeUI.closeWaiting();
+}
+
+function setScroll(){
+	options = {
+		scrollY: true, //是否竖向滚动
+		scrollX: false, //是否横向滚动
+		startX: 0, //初始化时滚动至x
+		startY: 0, //初始化时滚动至y
+		indicators: false, //是否显示滚动条
+		deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+		bounce: true //是否启用回弹
+	};
+	mui('._scroll_box').scroll(options);
+}
+
+function showSearchBtn(){
+	var remove = document.getElementById("screen_remove");
+	var search = document.getElementById("screen_search");
+	search.style.display = "block";
+	remove.style.display = "none";
+}
+
+function showRemoveBtn(){
+	var remove = document.getElementById("screen_remove");
+	var search = document.getElementById("screen_search");
+	remove.style.display = "block";
+	search.style.display = "none";
+}
+
+function loadDevices() {
+    var uid = plus.storage.getItem("uid");
+	mui.getJSON(HLH_list_url,{distributor_id:uid},function(json){
+		if(json.status == 1){
+			plus.storage.setItem("map_point",JSON.stringify(json));
+
+			menuList(json.data);
+			//右侧菜单栏滚动
+			setScroll();
+		}else{
+			mui.toast(json.msg);
+		}
+	});
+}
+
+mui.init();
+mui.plusReady(function(){
+	checkLogin ();
+	
+	plus.nativeUI.showWaiting();
+	
+	mui.back = function(){
+//		plus.storage.removeItem("uid");
+//		plus.storage.removeItem("gid");
+		plus.webview.close("map.html");
+	}
+	
+	mui('body').on('tap','#h_list li',function(){
+		var hid = this.getAttribute("hid");
+		show_detail(hid);
+		mui('.mui-off-canvas-wrap').offCanvas().close();
+	});
+
+	var searchTimer = null;
+	mui('body').on('keyup','#screen_number',function(){
+		var value = document.getElementById("screen_number").value;
+		if(!value){
+			return false;
+		}
+		showRemoveBtn();
+		/*mui("#h_list li").each(function(){
+			var hid_text = this.innerText;
+			if(hid_text.indexOf(value) >= 0){
+				this.style.display = "block";
+			}else{
+				this.style.display = "none";
+			}
+		});*/
+
+        // if (searchTimer != null) {
+        //     clearTimeout(searchTimer);
+        //     searchTimer = null;
+        // }
+		// searchTimer = setTimeout(function(){
+		    document.getElementById("h_list").innerHTML = "";
+		    var json = JSON.parse(plus.storage.getItem("map_point"));
+		    var ls = [];
+		    var data = json.data;
+            for(var i=0; i<data.length; i++) {
+                if (data[i].number.indexOf(value) != -1) {
+                    ls.push(data[i]);
+                }
+            }
+
+		    menuList(ls);
+		// }, 500);
+	});
+	
+	mui('body').on('tap','#screen_remove',function(){
+		document.getElementById("screen_number").value = "";
+		document.getElementById("screen_number").focus();
+		showSearchBtn();
+		/*mui("#h_list li").each(function(){
+			this.style.display = "block";
+		});*/
+
+		if (searchTimer != null) {
+            clearTimeout(searchTimer);
+            searchTimer = null;
+        }
+        var json = JSON.parse(plus.storage.getItem("map_point"));
+        menuList(json.data);
+	});
+	
+	mui('body').on('tap','.mui-off-canvas-backdrop',function(){
+		document.getElementById("screen_number").blur();
+	});
+	
+	//获取汇流盒列表
+	var uid = plus.storage.getItem("uid");
+	mui.getJSON(HLH_list_url,{distributor_id:uid},function(json){
+		
+		if(json.status == 1){
+			plus.storage.setItem("map_point",JSON.stringify(json));
+			// mui.toast('总共的对象个数'+json.data.length);
+
+			menuList(json.data);
+			//右侧菜单栏滚动
+			setScroll();
+		}else{
+			mui.toast(json.msg);
+		}
+                //获取地理位置经纬度
+        loadScript("http://www.bing.com/api/maps/mapcontrol?key=AgoNXVDA4hQQkqVU5g9lX-ZVo1kvEYuCYOi2U-oe-vWb-JQN3bDZZXTioMGOFz46&callback=initMap");
+	});
+	
+});
+
+</script>
+</body>
+</html>

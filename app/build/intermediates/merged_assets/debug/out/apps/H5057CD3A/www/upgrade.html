@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>升级页</title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <link href="css/icons-extra.css" rel="stylesheet"/>
+    <style type="text/css">
+    	html,body{background-color: rgba(0,0,0,0);width: 100%;height: 100%;}
+    	.update_confirm{position: fixed;background: rgba(0,0,0,0.5);top: 0px;bottom: 0px;left: 0px;right: 0px;z-index: 10;font-family: helvetica;}
+    	.confirm_box{text-align: center;width: 100%;height: 100%;color: #FFFFFF;padding: 35% 15% 2%;}
+    	.confirm_box .u_title{font-weight: normal;}
+    	.confirm_box .u_version{font-weight: normal;}
+    	.u_title{padding-bottom: 15%;}
+    	.u_version{padding-bottom: 15%;}
+    	.confirm_box .mui-btn{margin-bottom: 12%;box-shadow: 0px 0px 15px #205e8f;}
+    	.confirm_box .mui-btn-block{padding: 10px 0;font-size: 16px;}
+    	body .mui-btn:enabled:active{background-color: #216297;color: #cbcbcb;}
+    </style>
+</head>
+<body>
+	<div class="update_confirm" id="update_confirm">
+		<div class="confirm_box">
+			<h3 class="u_title">
+				Upgrade Device version
+			</h3>
+			<h4 class="u_version">
+				Version : <span id="u_version"></span>
+			</h4>
+			<div id="agree_upgrade" class="mui-btn mui-btn-primary mui-btn-block">
+				Agree to upgrade
+			</div>
+			<div id="disagree_upgrade" class="mui-btn mui-btn-primary mui-btn-block">
+				Next time
+			</div>
+		</div>
+	</div>
+</body>
+
+<script src="js/common.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+var countdown = 10;
+
+function settime() {
+	if(countdown == 0) {
+		mui.trigger(document.getElementById("disagree_upgrade"),'tap');
+	} else {
+//		document.getElementById("u_settime").innerText = "("+countdown+")";
+		countdown--;
+		mui.later(function() {
+			settime()
+		}, 1000);
+	}
+}
+
+mui.init();
+mui.plusReady(function() {
+	var ws = plus.webview.currentWebview();
+	var update_version_url ="http://"+C.host+":"+C.port+"/index.php?s=/Api/Device/getUpdateVersion.html";
+	mui.getJSON(
+		update_version_url,
+		{number:ws.number},
+		function(json){
+			if(json.status == 1){
+				document.getElementById("u_version").innerHTML = json.data;
+			}else{
+				document.getElementById("u_version").innerHTML = json.msg;
+			}
+		}
+	);
+	
+	mui('body').on('tap','#agree_upgrade',function(){
+		var set_status_url = "http://"+C.host+":"+C.port+"/index.php?s=/Api/Device/setUpdateStatus.html";
+		mui.post(set_status_url,{
+				number:ws.number,
+				status:2
+			},function(data){
+				mui.back();
+			},'json'
+		);
+		document.getElementById("update_confirm").classList.remove('active');
+	});
+	
+	mui('body').on('tap','#disagree_upgrade',function(){
+		var set_status_url = "http://"+C.host+":"+C.port+"/index.php?s=/Api/Device/setUpdateStatus.html";
+		mui.post(set_status_url,{
+				number:ws.number,
+				status:3
+			},function(data){
+				mui.back();
+			},'json'
+		);
+		document.getElementById("update_confirm").classList.remove('active');
+	});
+	
+	settime();
+});
+</script>
+</html>

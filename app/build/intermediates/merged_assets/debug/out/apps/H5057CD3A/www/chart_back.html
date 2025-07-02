@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+    <style type="text/css">
+    html,body{height: 100%;}
+	body,.mui-content{background-color: #EEEEEE;text-align: center;}
+	.mui-segmented-control.chart_tab{background-color: #FFFFFF;border: none;border-radius: 0;padding-top: 10px;}
+	.mui-segmented-control.chart_tab .mui-control-item{border: none;color: #444444;font-size: 14px;vertical-align: middle;
+		line-height: 1.3;padding-bottom: 8px;height: 45px;}
+	.mui-segmented-control.chart_tab .mui-control-item.mui-active{background: none;color: rgb(51,116,180);position: relative;}
+	.mui-segmented-control.chart_tab .mui-control-item.mui-active:after{
+		content: " ";display: block;position: absolute;width: 70%;height: 5px;background: rgb(51,116,180);bottom: 0;margin-left: 15%;
+	}
+	.mui-segmented-control.charge{
+		width: 308px;margin: auto;border-radius: 0px;background: rgb(203,203,203);border: none;display: none;margin-top: 15px;
+	}
+	.mui-segmented-control.charge .mui-control-item{
+		border: none;color: #444444;font-size: 18px;border-left: 1px solid #ffffff;width: 33%;
+	}
+	.mui-segmented-control.charge .mui-control-item:first-child{
+		border-left: 1px solid #cbcbcb;
+	}
+	.mui-segmented-control.charge .mui-control-item.mui-active{
+		color: #FFFFFF;
+		background: #3374b5;
+		border-left: 1px solid #3374b5;
+	}
+	.mui-segmented-control.charge .mui-control-item.mui-active + .mui-control-item{
+		border-left: 1px solid #cbcbcb;
+	}
+	#show_date{width: 229px;margin: auto;margin-top: 15px;position: relative;font-size: 18px;border-radius: 0px;
+		border-top: 1px solid #999999;border-bottom: 1px solid #999999;background: #FFFFFF;border-left: 1px solid #3374b5;border-right: 1px solid #3374b5;
+		-webkit-transition-duration: 0s;transition-duration: 0s;}
+	#show_date .mui-icon{position: absolute; right: 8px;top: 2px;font-size: 1.5em;background-image: url(img/arrow_down.png);
+		width: 32px;height: 32px;background-size: 60%;background-repeat: no-repeat;background-position: center;}
+	#show_date #before_day,#show_date #before{background-image: url(img/arrow_left_right.png);width: 39px;height: 39px;background-position: 0px 0px;
+		display: block;position: absolute;left: -40px;top: -1px;z-index: 1;cursor: pointer;background-size: 200%;}
+	#show_date #next_day,#show_date #next{background-image: url(img/arrow_left_right.png);width: 39px;height: 39px;background-position: -39px 0px;
+		display: block;position: absolute;right: -40px;top: -1px;z-index: 1;cursor: pointer;background-size: 200%;}
+	.chart_box{width: 93%;margin:40px 2% 15px; padding-left: 2%;}
+    </style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-segmented-control chart_tab">
+		    <a class="mui-control-item mui-active" data-type="volt">Voltage</a>
+		    <a class="mui-control-item _auth_admin" data-type="charge">Charge<br/>Quantity</a>
+		    <a class="mui-control-item _auth_admin" data-type="discharge">Discharge<br/>Quantity</a>
+		</div>
+		<div class="chart_box">
+            <canvas id="chart" height="230"></canvas>
+        </div>
+		<div class="mui-segmented-control charge" id="charge_tab">
+		    <a class="mui-control-item mui-active" data-during = "day">Day</a>
+		    <a class="mui-control-item" data-during = "month">Month</a>
+		    <a class="mui-control-item" data-during = "year">Year</a>
+		</div>
+		<button type="button" class="mui-btn" data-options='{"type":"date"}' id="show_date">
+			<span id="before_day"></span>
+			<span id="date"></span>
+			<span class="mui-icon"></span>
+			<span id="next_day"></span>
+		</button>
+	</div>
+</body>
+
+<script src="js/common.js"></script>
+<script src="js/chart.min.js"></script>
+<script src="js/mui.picker.all.js"></script>
+<script type="text/javascript" charset="utf-8">
+var hid;
+var charge_tab = document.getElementById("charge_tab");
+var date_box = document.getElementById("show_date");
+var charge_during = "";
+var chart_type = "";
+var chart_datetime = "";
+var view = "date";
+
+Chart.defaults.global.tooltips.enabled = false;
+Chart.defaults.global.legend.display = false;
+Chart.defaults.global.events = [];
+Chart.defaults.global.defaultFontSize = 10;
+
+/**
+ * 绘制line图
+ * @param {Object} data
+ */
+function chartV(data){
+	if(!data){
+		data = [{"value":{"V":0},"created_at":" "}];
+	}
+	
+	var lineData = {
+        datasets: [{
+        	backgroundColor: "#3374b5",
+        	lineTension : 0,
+        	pointBorderColor : "rgba(0,0,0,0)",
+        	pointBackgroundColor : "rgba(0,0,0,0)",
+        }]
+    };
+    
+    lineData.labels = new Array(data.length);
+    lineData.datasets[0].data = new Array(data.length);
+    for (var i = 0; i < data.length; i++) {
+    	lineData.labels[i] = data[i].created_at;
+    	lineData.datasets[0].data[i] = data[i].value.V;
+    }
+    lineData.labels.reverse();
+    lineData.datasets[0].data.reverse();
+    
+	var chart_box = document.getElementById("chart");
+	var ctx = chart_box.getContext("2d");
+	new Chart(ctx,{
+		type: 'line',
+	    data: lineData
+	});
+}
+
+/**
+ * 绘制bar图
+ * @param {Object} data
+ */
+function chartCharge(data){
+	if(!data){
+		data = [{"value":{"day_charge":0},"created_at":" "}];
+	}
+	
+	var barData = {
+        datasets: [{
+            	backgroundColor: "#3374b5",
+           }]
+    };
+    
+    barData.labels = new Array(data.length);
+    barData.datasets[0].data = new Array(data.length);
+    for (var i = 0; i < data.length; i++) {
+    	barData.labels[i] = data[i].created_at;
+    	if(chart_type == "charge"){
+    		if(data[i].value){
+    			barData.datasets[0].data[i] = data[i].value.day_charge;
+    		}else{
+    			barData.datasets[0].data[i] = 0;
+    		}
+    	}else if(chart_type == "discharge"){
+    		if(data[i].value){
+    			barData.datasets[0].data[i] = data[i].value.day_discharge;
+    		}else{
+    			barData.datasets[0].data[i] = 0;
+    		}
+    	}
+    }
+    if(charge_during == "day"){
+    	barData.labels.reverse();
+    	barData.datasets[0].data.reverse();
+    }
+    
+    var chart_box = document.getElementById("chart");
+	var ctx = chart_box.getContext("2d");
+	new Chart(ctx,{
+		type: 'bar',
+	    data: barData,
+	});
+}
+
+/**
+ * 重置时间选择框
+ */
+function resetDate () {
+	var current = "";
+	if(chart_type == "volt"){
+		view = "date";
+		current = new Date().format("yyyy-MM-dd");
+	}else if(chart_type != "volt"){
+		if(charge_during == "day"){
+			view = "date";
+			current = new Date().format("yyyy-MM-dd");
+		}
+		if(charge_during == "month"){
+			view = "month";
+			current = new Date().format("yyyy-MM");
+		}
+		if(charge_during == "year"){
+			view = "year";
+			current = new Date().format("yyyy");
+		}
+	}
+	
+	document.getElementById("show_date").setAttribute("data-options",'{"type":"'+view+'"}');
+	document.getElementById("date").innerText = current;
+	setChartParam();
+    getChartData();
+}
+
+/**
+ * 设置图表数据参数
+ */
+function setChartParam() {
+	var chart_tab = document.getElementsByClassName("chart_tab");
+	var chart_tab_active = chart_tab[0].getElementsByClassName("mui-active");
+	chart_type = chart_tab_active[0].getAttribute("data-type");
+	chart_datetime = document.getElementById("date").innerText;
+	var charge = document.getElementsByClassName("charge");
+	var charge_active = charge[0].getElementsByClassName("mui-active");
+	charge_during = charge_active[0].getAttribute("data-during");
+}
+
+/**
+ * 获取图表数据
+ */
+function getChartData () {
+	var url = "";
+	var data = {};
+	var volt_url = "http://"+C.host+":"+C.port+"/index.php?m=Api&c=Device&a=chart";
+	var charge_url = "http://"+C.host+":"+C.port+"/index.php?m=Api&c=Device&a=chartCharge";
+	if(chart_type == "volt"){
+		url = volt_url;
+		data = {hid:hid,date:chart_datetime};
+	}else{
+		url = charge_url;
+		data = {hid:hid,during:charge_during,datetime:chart_datetime};
+	}
+	mui.getJSON(url,data,function(json){
+		drawChart(json.data);
+	});
+}
+
+/**
+ * 绘制图表
+ * @param chart_data
+ */
+function drawChart(chart_data){
+	if(chart_type == "volt"){
+		chartV(chart_data);
+	}else{
+		chartCharge(chart_data);
+	}
+}
+
+function checkAuthShow () {
+	var gid = plus.storage.getItem("gid");
+	var _auth_admin_list = document.querySelectorAll("._auth_admin");
+	for (var i = 0; i < _auth_admin_list.length; i++) {
+		if(gid == 1){
+			_auth_admin_list[i].style.display = "table-cell";
+		}else{
+			_auth_admin_list[i].style.display = "none";
+		}
+	}
+}
+
+window.addEventListener('chart.html',function(event){
+	setChartParam();
+	resetDate();
+});
+
+mui.init();
+mui.plusReady(function(){
+	
+	checkAuthShow();
+	
+	hid = plus.storage.getItem("hid");
+	
+	//tab切换
+	mui('.mui-segmented-control').off('tap', 'a');
+	mui('.mui-segmented-control').on('tap', 'a', function(e) {
+		mui.later(function(){//等tab切换完
+			setChartParam();
+			if(chart_type != "volt"){
+				date_box.style.background = "#FFFFFF";
+				date_box.style.color = "#333333";
+				date_box.style.borderTop = "1px solid #999999";
+				date_box.style.borderBottom = "1px solid #999999";
+				charge_tab.style.display ="table";
+			}else{
+				date_box.style.background = "#FFFFFF";
+				date_box.style.color = "#333333";
+				date_box.style.borderTop = "1px solid #999999";
+				date_box.style.borderBottom = "1px solid #999999";
+				charge_tab.style.display ="none";
+			}
+			resetDate();
+		},200);
+	});
+	
+	mui("body").on('tap',"#next_day",function(e){
+		e.stopPropagation();
+    	var current = new Date(document.getElementById("date").innerText);
+    	if(view == "date"){
+    		current.setDate(current.getDate()+1);
+    		document.getElementById("date").innerText = current.format("yyyy-MM-dd");
+    	}else if(view == "month"){
+    		current.setMonth(current.getMonth()+1);
+    		document.getElementById("date").innerText = current.format("yyyy-MM");
+    	}else if(view == "year"){
+    		current.setFullYear(current.getFullYear()+1);
+    		document.getElementById("date").innerText = current.format("yyyy");
+    	}
+		setChartParam();
+	    getChartData();
+    });
+    
+    mui("body").on('tap',"#before_day",function(e){
+    	e.stopPropagation();
+    	var current = new Date(document.getElementById("date").innerText);
+    	if(view == "date"){
+    		current.setDate(current.getDate()-1);
+    		document.getElementById("date").innerText = current.format("yyyy-MM-dd");
+    	}else if(view == "month"){
+    		current.setMonth(current.getMonth()-1);
+    		document.getElementById("date").innerText = current.format("yyyy-MM");
+    	}else if(view == "year"){
+    		current.setFullYear(current.getFullYear()-1);
+    		document.getElementById("date").innerText = current.format("yyyy");
+    	}
+		setChartParam();
+	    getChartData();
+    });
+	
+	mui('body').on('tap','#show_date',function(){
+		var optionsJson = this.getAttribute('data-options') || '{}';
+		var options = JSON.parse(optionsJson);
+		var picker = new mui.DtPicker(options);
+		picker.show(function(rs) {
+			document.getElementById("date").innerText = rs.text;
+			setChartParam();
+    		getChartData();
+			picker.dispose();
+		});
+	});
+});
+</script>
+</html>

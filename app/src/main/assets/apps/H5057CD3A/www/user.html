@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.css" rel="stylesheet" />
+		<style type="text/css">
+			.login,
+			.set_wifi {
+				margin: auto;
+				margin-top: 10px;
+				width: 90%;
+			}
+			
+			.mui-input-row {
+				margin: 10px 0;
+			}
+			
+			.mui-input-group {
+				padding-bottom: 10px;
+				padding-top: 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-back mui-pull-left mui-action-back"></a>
+			<h1 class="mui-title" id="title">Personal Infomation</h1>
+			<a id="modifypw" class="mui-icon mui-action-menu mui-icon-locked mui-pull-right"></a>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-input-row" style="height: auto;">
+					<label>Account：</label>
+					<input type="text" class="mui-input-clear" id="account" name="account" disabled="disabled">
+				</div>
+
+				<div class="mui-input-row" style="height: auto;">
+					<label>Emergency Call：</label>
+					<input type="number" class="mui-input-clear" id="phone" name="phone" placeholder="Emergency Call">
+				</div>
+				<div class="mui-input-row" style="height: auto;">
+					<label>Email：</label>
+					<input type="text" class="mui-input-clear" id="Email" name="Email" placeholder="Email">
+				</div>
+			
+
+				<button type="button" id="save" class="mui-btn mui-btn-danger mui-btn-block login">Confirm modify</button>
+				<input type="hidden" id="timezone" name="timezone" />
+				<input type="hidden" id="lat" name="lat" />
+				<input type="hidden" id="lon" name="lon" />
+				
+			</form>
+		
+		</div>
+	</body>
+
+	<script src="js/common.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		mui.init();
+		mui.plusReady(function() {
+			
+			var uid = plus.storage.getItem("uid");
+		
+			var userinfourl = "http://"+C.host+":"+C.port+"/index.php?s=/Api/User/info.html&uid="+uid;
+			mui.getJSON(userinfourl, function(json) {
+			
+				if(json.status == 1) {
+					document.getElementById("account").value = json.data.account;
+					document.getElementById("phone").value = json.data.tel;
+					document.getElementById("Email").value = json.data.email;
+
+					document.getElementById("timezone").value = json.data.timezone;
+					document.getElementById("lat").value = json.data.lat;
+					document.getElementById("lon").value = json.data.lon;
+
+				} else {
+					mui.toast(json.msg);
+				}
+			});
+
+			//修改按钮
+			mui("body").on("touchend", "#save", function() {
+		
+				var account = document.getElementById("account").value;
+				if(!account) {
+					mui.alert("Name can't empty", "Error", "ok", null, "div");
+					return false;
+				}
+				var data = {};
+				data.uid=uid;//用户编号，根据id修改内容
+				data.account = account;//用户账号
+				//获取地理位置经纬度
+				plus.geolocation.getCurrentPosition(function(p) {
+					document.getElementById("lat").value = p.coords.latitude;
+					document.getElementById("lon").value = p.coords.longitude;
+				});
+				data.lat = document.getElementById("lat").value;
+				data.lon = document.getElementById("lon").value;
+				//获取注册手机端时区
+				var NSTimeZone = plus.android.importClass("java.util.TimeZone");
+				var tz = NSTimeZone.getDefault().getRawOffset();
+				var localTM = -tz / (3600 * 1000);
+
+				data.timezone = localTM;
+
+				var tel=document.getElementById("phone").value;
+				if(tel.length!=0){
+					data.tel=tel;
+				}else{
+					mui.toast("Emergency Call can't empty!");
+				}
+				var email=document.getElementById("Email").value;
+				if(email.length!=0){
+					data.email=email;
+				}else{
+					mui.toast("Email can't empty!");
+				}
+				var save_url = "http://"+C.host+":"+C.port+"/index.php?s=/Api/User/usersave.html";
+				mui.post(save_url, data, function(json) {
+					if(json.status == 1) {
+						mui.toast(json.msg);
+						
+					} else {
+						mui.toast('modify failed!');
+					}
+				}, 'json');
+			});
+		});
+	</script>
+
+</html>

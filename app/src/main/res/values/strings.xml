@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">aoboet</string>
+    <string name="app_version">v3.0.0</string>
+    <string name="btnConfirmTitle">Confirm</string>
+    <string name="confing_end">Configuration has been completed, check the status of the module</string>
+    <string name="dcloud_gallery_app_name">@string/app_name</string>
+    <string name="enterPassword">Enter Password</string>
+    <string name="error_pasd_length">Password length incorrect</string>
+    <string name="no_ssid">Not found this ssid</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="switchIsSsidHiddenTitle">SSID is Hidden</string>
+    <string name="title_activity_dev_view">DevViewActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_setup_dev">SetupDevActivity</string>
+    <string name="tvApSsidTitle">SSID:</string>
+    <string name="tvPasswordTitle">Password:</string>
+</resources>

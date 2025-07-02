@@ -1,0 +1,204 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.lt.batteryManage"
+4    platformBuildVersionCode="31"
+5    platformBuildVersionName="12"
+6    android:compileSdkVersion="31"
+7    android:compileSdkVersionCodename="12"
+8    android:versionCode="6"
+9    android:versionName="2.0" >
+10
+11    <uses-sdk
+11-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:11:5-13:40
+12        android:minSdkVersion="23"
+12-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:12:9-35
+13        android:targetSdkVersion="30" />
+13-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:13:9-38
+14
+15    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+15-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:15:5-75
+15-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:15:22-73
+16    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+16-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:16:5-78
+16-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:16:22-76
+17    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+17-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:17:5-85
+17-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:17:22-83
+18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+18-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:18:5-78
+18-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:18:22-76
+19    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+19-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:19:5-75
+19-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:19:22-73
+20    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+20-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:20:5-74
+20-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:20:22-71
+21    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+21-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:21:5-75
+21-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:21:22-72
+22    <uses-permission android:name="android.permission.WAKE_LOCK" />
+22-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:22:5-67
+22-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:22:22-65
+23    <uses-permission android:name="android.permission.INTERNET" />
+23-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:23:5-66
+23-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:23:22-64
+24    <uses-permission android:name="android.permission.VIBRATE" />
+24-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:24:5-65
+24-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:24:22-63
+25    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+25-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:25:5-78
+25-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:25:22-76
+26    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+26-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:26:5-80
+26-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:26:22-78
+27    <uses-permission android:name="android.permission.CAMERA" />
+27-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:27:5-64
+27-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:27:22-62
+28
+29    <uses-feature android:name="android.hardware.camera" />
+29-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:28:5-59
+29-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:28:19-57
+30    <uses-feature android:name="android.hardware.camera.autofocus" />
+30-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:29:5-69
+30-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:29:19-67
+31
+32    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+32-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:30:5-80
+32-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:30:22-78
+33    <uses-permission android:name="android.permission.FLASHLIGHT" />
+33-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:31:5-68
+33-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:31:22-66
+34    <uses-permission android:name="android.permission.GET_TASKS" />
+34-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:32:5-67
+34-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:32:22-65
+35
+36    <application
+36-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:35:5-94:19
+37        android:allowBackup="true"
+37-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:39:9-35
+38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+38-->[androidx.core:core:1.5.0] /home/nick/.gradle/caches/transforms-3/cb0ec623bdc10bc63d1b95e97c599215/transformed/core-1.5.0/AndroidManifest.xml:24:18-86
+39        android:debuggable="true"
+40        android:extractNativeLibs="false"
+40-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:40:9-42
+41        android:icon="@drawable/ic_launcher"
+41-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:38:9-45
+42        android:label="@string/app_name"
+42-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:37:9-41
+43        android:testOnly="true"
+44        android:theme="@style/AppTheme"
+44-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:36:9-40
+45        android:usesCleartextTraffic="true" >
+45-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:41:9-44
+46        <uses-library
+46-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:43:9-45:39
+47            android:name="org.apache.http.legacy"
+47-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:44:13-50
+48            android:required="false" />
+48-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:45:13-37
+49
+50        <service android:name="com.demo.smarthome.service.SocketService" />
+50-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:46:9-75
+50-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:46:18-73
+51
+52        <activity
+52-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:47:9-50:51
+53            android:name="com.demo.smarthome.activity.WelcomeActivity"
+53-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:48:13-71
+54            android:launchMode="singleTask"
+54-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:49:13-44
+55            android:screenOrientation="portrait" />
+55-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:50:13-49
+56        <activity
+56-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:51:9-53:51
+57            android:name="com.demo.smarthome.activity.UserLinkActivity"
+57-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:52:13-72
+58            android:screenOrientation="portrait" />
+58-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:53:13-49
+59        <activity android:name="com.demo.smarthome.activity.SsidListAct" />
+59-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:54:9-75
+59-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:54:19-73
+60        <activity
+60-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:55:9-57:51
+61            android:name="com.espressif.iot.esptouch.demo_activity.EsptouchDemoActivity"
+61-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:56:13-89
+62            android:screenOrientation="portrait" />
+62-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:57:13-49
+63        <activity
+63-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:58:9-70:20
+64            android:name="io.dcloud.PandoraEntry"
+64-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:60:13-50
+65            android:configChanges="orientation|keyboardHidden"
+65-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:64:13-63
+66            android:exported="true"
+66-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:61:13-36
+67            android:launchMode="singleTask"
+67-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:62:13-44
+68            android:screenOrientation="portrait"
+68-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:63:13-49
+69            android:theme="@style/AppTheme"
+69-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:59:13-44
+70            android:windowSoftInputMode="adjustResize" >
+70-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:65:13-55
+71            <intent-filter>
+71-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:66:13-69:29
+72                <action android:name="android.intent.action.MAIN" />
+72-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:67:17-68
+72-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:67:25-66
+73
+74                <category android:name="android.intent.category.LAUNCHER" />
+74-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:68:17-76
+74-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:68:27-74
+75            </intent-filter>
+76        </activity>
+77        <activity
+77-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:71:9-78:49
+78            android:name="io.dcloud.PandoraEntryActivity"
+78-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:73:13-58
+79            android:configChanges="screenSize|orientation|keyboardHidden"
+79-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:76:13-74
+80            android:hardwareAccelerated="true"
+80-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:78:13-47
+81            android:launchMode="singleTask"
+81-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:74:13-44
+82            android:screenOrientation="portrait"
+82-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:75:13-49
+83            android:theme="@style/DCloudTheme"
+83-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:72:13-47
+84            android:windowSoftInputMode="adjustResize" />
+84-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:77:13-55
+85
+86        <service
+86-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:79:9-81:38
+87            android:name="io.dcloud.common.adapter.io.MiniServerService"
+87-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:80:13-73
+88            android:exported="true" />
+88-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:81:13-36
+89
+90        <meta-data
+90-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:82:9-84:35
+91            android:name="com.android.dynamic.apk.fused.modules"
+91-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:83:13-65
+92            android:value="base" />
+92-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:84:13-33
+93        <meta-data
+93-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:85:9-87:60
+94            android:name="com.android.stamp.source"
+94-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:86:13-52
+95            android:value="https://play.google.com/store" />
+95-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:87:13-58
+96        <meta-data
+96-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:88:9-90:56
+97            android:name="com.android.stamp.type"
+97-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:89:13-50
+98            android:value="STAMP_TYPE_STANDALONE_APK" />
+98-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:90:13-54
+99        <meta-data
+99-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:91:9-93:46
+100            android:name="com.android.vending.splits"
+100-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:92:13-54
+101            android:resource="@xml/splits0" />
+101-->/mnt/data/AoBoEt/aoboet_java/app/src/main/AndroidManifest.xml:93:13-44
+102    </application>
+103
+104</manifest>
