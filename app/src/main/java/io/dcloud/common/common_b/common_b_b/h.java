@@ -26,9 +26,8 @@ import io.dcloud.common.adapter.util.DragBean;
 import io.dcloud.common.constant.AbsoluteConst;
 import io.dcloud.common.util.JSONUtil;
 import io.dcloud.common.util.PdrUtil;
-import io.dcloud.nineoldandroids.animation.Animator;
-import io.dcloud.nineoldandroids.animation.ValueAnimator;
-import io.dcloud.nineoldandroids.view.ViewHelper;
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 
 /* compiled from: Drag.java */
 /* loaded from: classes.dex */
@@ -1120,44 +1119,43 @@ public class h {
         }
         ofFloat.setDuration(Math.min(Math.max(new BigDecimal(450).multiply(new BigDecimal(Math.abs(i2 - i)).divide(new BigDecimal(this.J), 4, 4)).longValue(), 200L), 250L));
         ofFloat.addListener(new Animator.AnimatorListener() { // from class: io.dcloud.common.b.b.h.4
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationCancel(Animator animator) {
             }
 
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationRepeat(Animator animator) {
             }
 
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationStart(Animator animator) {
 //                h.j(h.this);
             }
 
             /* JADX WARN: Removed duplicated region for block: B:34:0x014f  */
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             /*
                 Code decompiled incorrectly, please refer to instructions dump.
                 To view partially-correct code enable 'Show inconsistent code' option in preferences
             */
-            public void onAnimationEnd(io.dcloud.nineoldandroids.animation.Animator r12) {
+            public void onAnimationEnd(android.animation.Animator r12) {
                 /*
                     Method dump skipped, instructions count: 549
                     To view this dump change 'Code comments level' option to 'DEBUG'
                 */
-                throw new UnsupportedOperationException("Method not decompiled: io.dcloud.common.b.b.h.AnonymousClass4.onAnimationEnd(io.dcloud.nineoldandroids.animation.Animator):void");
+                throw new UnsupportedOperationException("Method not decompiled: io.dcloud.common.b.b.h.AnonymousClass4.onAnimationEnd(android.animation.Animator):void");
             }
         });
         ofFloat.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() { // from class: io.dcloud.common.b.b.h.5
-            @Override // io.dcloud.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener
+            @Override // android.animation.ValueAnimator.AnimatorUpdateListener
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 ViewGroup.LayoutParams layoutParams2 = view.getLayoutParams();
-                View view2 = view;
-                if (view2 instanceof INativeView) {
-                    h.this.b(view2, ((Integer) valueAnimator.getAnimatedValue()).intValue());
+                if (view instanceof INativeView) {
+                    h.this.b(view, ((Integer) valueAnimator.getAnimatedValue()).intValue());
                     view.requestLayout();
                     view.invalidate();
                 } else if (layoutParams2 instanceof FrameLayout.LayoutParams) {
-                    ViewHelper.setX(view2, ((Float) valueAnimator.getAnimatedValue()).floatValue());
+                    view.setX(((Float) valueAnimator.getAnimatedValue()).floatValue());
                 } else if (layoutParams2 instanceof AbsoluteLayout.LayoutParams) {
                     ((AbsoluteLayout.LayoutParams) layoutParams2).x = ((Integer) valueAnimator.getAnimatedValue()).intValue();
                     view.requestLayout();
@@ -1321,7 +1319,7 @@ public class h {
             return ((AbsoluteLayout.LayoutParams) view.getLayoutParams()).x;
         }
         if (view.getLayoutParams() instanceof FrameLayout.LayoutParams) {
-            return (int) ViewHelper.getX(view);
+            return (int) view.getX();
         }
         return 0;
     }
@@ -1343,7 +1341,7 @@ public class h {
                 return;
             }
             if (view.getLayoutParams() instanceof FrameLayout.LayoutParams) {
-                ViewHelper.setX(view, i);
+                view.setX(i);
             }
         }
     }

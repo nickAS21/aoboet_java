@@ -1,6 +1,6 @@
 package com.dcloud.zxing.oned.rss.expanded.decoders;
 
-import android.support.v4.text.HtmlCompat;
+import androidx.core.text.HtmlCompat;
 
 import com.dcloud.zxing.NotFoundException;
 import com.dcloud.zxing.common.BitArray;

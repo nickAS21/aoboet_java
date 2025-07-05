@@ -8,7 +8,6 @@ import android.net.wifi.WifiManager;
 
 import io.dcloud.common.util.JSUtil;
 
-/* loaded from: classes.dex */
 public class EspWifiAdminSimple {
     private final Context mContext;
 
@@ -16,18 +15,23 @@ public class EspWifiAdminSimple {
         this.mContext = context;
     }
 
+    /** Повертає SSID підключеної Wi-Fi мережі або null, якщо немає підключення */
     public String getWifiConnectedSsid() {
         WifiInfo connectionInfo = getConnectionInfo();
         if (connectionInfo == null || !isWifiConnected()) {
             return null;
         }
-        int length = connectionInfo.getSSID().length();
-        if (connectionInfo.getSSID().startsWith(JSUtil.QUOTE) && connectionInfo.getSSID().endsWith(JSUtil.QUOTE)) {
-            return connectionInfo.getSSID().substring(1, length - 1);
+        String ssid = connectionInfo.getSSID();
+        if (ssid == null) return null;
+
+        // Прибираємо лапки, якщо вони є
+        if (ssid.startsWith(JSUtil.QUOTE) && ssid.endsWith(JSUtil.QUOTE)) {
+            return ssid.substring(1, ssid.length() - 1);
         }
-        return connectionInfo.getSSID();
+        return ssid;
     }
 
+    /** Повертає BSSID підключеної Wi-Fi мережі або null, якщо немає підключення */
     public String getWifiConnectedBssid() {
         WifiInfo connectionInfo = getConnectionInfo();
         if (connectionInfo == null || !isWifiConnected()) {
@@ -36,19 +40,22 @@ public class EspWifiAdminSimple {
         return connectionInfo.getBSSID();
     }
 
+    /** Отримати інформацію про Wi-Fi з'єднання */
     private WifiInfo getConnectionInfo() {
-        return ((WifiManager) this.mContext.getSystemService("wifi")).getConnectionInfo();
+        WifiManager wifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        return wifiManager != null ? wifiManager.getConnectionInfo() : null;
     }
 
+    /** Перевірити, чи Wi-Fi підключено */
     private boolean isWifiConnected() {
         NetworkInfo wifiNetworkInfo = getWifiNetworkInfo();
-        if (wifiNetworkInfo != null) {
-            return wifiNetworkInfo.isConnected();
-        }
-        return false;
+        return wifiNetworkInfo != null && wifiNetworkInfo.isConnected();
     }
 
+    /** Отримати інформацію про Wi-Fi мережу */
     private NetworkInfo getWifiNetworkInfo() {
-        return ((ConnectivityManager) this.mContext.getSystemService("connectivity")).getNetworkInfo(1);
+        ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null) return null;
+        return cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
     }
 }

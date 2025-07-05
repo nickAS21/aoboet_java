@@ -1,5 +1,6 @@
 package com.dcloud.android.v4.view;
 
+import android.content.Context;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewParent;
@@ -45,7 +46,7 @@ public class ViewParentCompat {
             if (view == null) {
                 return false;
             }
-            ((AccessibilityManager) view.getContext().getSystemService("accessibility")).sendAccessibilityEvent(accessibilityEvent);
+            ((AccessibilityManager) view.getContext().getSystemService(Context.ACCESSIBILITY_SERVICE)).sendAccessibilityEvent(accessibilityEvent);
             return true;
         }
 

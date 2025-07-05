@@ -564,7 +564,7 @@ public class PdrUtil {
     public static void alert(Activity activity, String str, Bitmap bitmap) {
         final AlertDialog create = new AlertDialog.Builder(activity).create();
         LinearLayout linearLayout = new LinearLayout(activity);
-        linearLayout.setOrientation(1);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setGravity(17);
         TextView textView = new TextView(activity);
         textView.setText(str);
@@ -584,7 +584,7 @@ public class PdrUtil {
     }
 
     public static void toast(Context context, String str, Bitmap bitmap) {
-        Toast makeText = Toast.makeText(context, str, 1);
+        Toast makeText = Toast.makeText(context, str, Toast.LENGTH_LONG);
         if (bitmap != null) {
             int height = bitmap.getHeight();
             int width = bitmap.getWidth();
@@ -594,7 +594,7 @@ public class PdrUtil {
             ((ViewGroup) view).addView(imageView, 0);
             makeText.setText(str + " w=" + width + ";h=" + height);
         }
-        makeText.setDuration(1);
+        makeText.setDuration(Toast.LENGTH_LONG);
         makeText.show();
     }
 

@@ -412,7 +412,7 @@ public class l extends AbsMgr implements IMgr.WindowEvent {
             dVar.j.processEvent(IMgr.MgrType.FeatureMgr, 1, new Object[]{dVar.obtainWebView(), "nativeobj", "drawText", JSONUtil.createJSONArray("['" + valueOf + "','" + valueOf + "','" + optString + "',{'top':'0px','left':'0px','width':'100%','height':'100%'},{'size':'16px','color':'" + optString2 + "'},'" + valueOf + "',null]")});
             dVar.j.processEvent(IMgr.MgrType.FeatureMgr, 1, new Object[]{dVar.obtainWebView(), "nativeobj", AbsoluteConst.EVENTS_WEBVIEW_SHOW, JSONUtil.createJSONArray("['" + valueOf + "','" + valueOf + "']")});
             dVar.j.processEvent(IMgr.MgrType.FeatureMgr, 10, new Object[]{dVar.obtainWebView(), "nativeobj", "addNativeView", new Object[]{dVar, valueOf}});
-            dVar.mNavigationBarHeight = (int) TypedValue.applyDimension(1, 42.0f, dVar.obtainWebView().obtainWebview().getContext().getResources().getDisplayMetrics());
+            dVar.mNavigationBarHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 42.0f, dVar.obtainWebView().obtainWebview().getContext().getResources().getDisplayMetrics());
         }
     }
 }

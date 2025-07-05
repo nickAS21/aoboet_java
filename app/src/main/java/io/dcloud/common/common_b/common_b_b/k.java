@@ -25,8 +25,8 @@ public class k extends FrameLayout {
     private float e;
     private float f;
     private int g;
-    e h;
-    e i;
+    DHImageView h;
+    DHImageView i;
     DHAppRootView j;
     private float k;
     private int l;
@@ -52,8 +52,8 @@ public class k extends FrameLayout {
     public void a(Context context) {
         this.b = context;
         this.d = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-        this.h = new e(context);
-        this.i = new e(context);
+        this.h = new DHImageView(context);
+        this.i = new DHImageView(context);
         addView(this.h, new FrameLayout.LayoutParams(-1, -1));
         addView(this.i, new FrameLayout.LayoutParams(-1, -1));
         RelativeLayout relativeLayout = new RelativeLayout(context);
@@ -67,9 +67,9 @@ public class k extends FrameLayout {
         view.setBackgroundResource(RInformation.DRAWEBL_SHADOW_LEFT);
         this.m.addView(view, new RelativeLayout.LayoutParams(this.n, -1));
         addView(this.m, layoutParams);
-        this.m.setVisibility(8);
-        this.i.setVisibility(8);
-        this.h.setVisibility(8);
+        this.m.setVisibility(View.GONE);
+        this.i.setVisibility(View.GONE);
+        this.h.setVisibility(View.GONE);
     }
 
     public void a() {
@@ -77,22 +77,22 @@ public class k extends FrameLayout {
         if (relativeLayout != null && relativeLayout.getParent() == null) {
             addView(this.m, new RelativeLayout.LayoutParams(-1, -1));
         }
-        e eVar = this.h;
+        DHImageView eVar = this.h;
         if (eVar != null && eVar.getParent() == null) {
             addView(this.h, new FrameLayout.LayoutParams(-1, -1));
         }
-        e eVar2 = this.i;
+        DHImageView eVar2 = this.i;
         if (eVar2 == null || eVar2.getParent() != null) {
             return;
         }
         addView(this.i, new FrameLayout.LayoutParams(-1, -1));
     }
 
-    public e b() {
+    public DHImageView b() {
         return this.h;
     }
 
-    public e c() {
+    public DHImageView c() {
         return this.i;
     }
 
@@ -199,10 +199,10 @@ public class k extends FrameLayout {
 
             @Override // android.view.animation.Animation.AnimationListener
             public void onAnimationEnd(Animation animation) {
-                k.this.m.setVisibility(8);
+                k.this.m.setVisibility(View.GONE);
             }
         }));
-        e eVar = this.h;
+        DHImageView eVar = this.h;
         eVar.scrollTo(0, eVar.getScrollY());
         this.h.startAnimation(a(-scrollX2, i2, i3, new Animation.AnimationListener() { // from class: io.dcloud.common.b.b.k.3
             @Override // android.view.animation.Animation.AnimationListener
@@ -219,7 +219,7 @@ public class k extends FrameLayout {
                 k.this.h.postDelayed(new Runnable() { // from class: io.dcloud.common.b.b.k.3.1
                     @Override // java.lang.Runnable
                     public void run() {
-                        k.this.h.setVisibility(8);
+                        k.this.h.setVisibility(View.GONE);
                         k.this.h.setImageBitmap(null);
                     }
                 }, 250L);

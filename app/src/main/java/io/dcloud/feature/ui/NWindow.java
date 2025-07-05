@@ -40,7 +40,6 @@ import io.dcloud.common.util.JSUtil;
 import io.dcloud.common.util.PdrUtil;
 import io.dcloud.common.util.TestUtil;
 import io.dcloud.common.util.ThreadPool;
-import io.dcloud.nineoldandroids.view.ViewHelper;
 
 /* compiled from: NWindow.java */
 /* loaded from: classes.dex  old c*/
@@ -264,10 +263,10 @@ public class NWindow extends NView implements IEventCallback {
         } else {
             obtainMainView.layout(0, 0, i3, i4);
         }
-        ViewHelper.setX(obtainMainView, 0.0f);
-        ViewHelper.setY(obtainMainView, 0.0f);
+        obtainMainView.setX(0.0f);
+        obtainMainView.setY(0.0f);
         iContainerView.addFrameItem(adaFrameItem, AdaFrameItem.LayoutParamsUtil.createLayoutParams(i, i2, i3, i4));
-        Logger.d(Logger.VIEW_VISIBLE_TAG, "appendNWindow Y=" + ViewHelper.getY(obtainMainView));
+        Logger.d(Logger.VIEW_VISIBLE_TAG, "appendNWindow Y=" + obtainMainView.getY());
     }
 
     static {

@@ -132,7 +132,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="0px"
-            android:src="@layout/confirm_btn_press"
+            android:src="@drawable/confirm_btn_press"
             android:scaleType="fitStart"
             android:adjustViewBounds="true"/>
     </LinearLayout>

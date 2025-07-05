@@ -1,7 +1,7 @@
 package com.dcloud.zxing.pdf417;
 
-import android.support.v4.app.FrameMetricsAggregator;
-import android.support.v4.view.PointerIconCompat;
+import androidx.core.app.FrameMetricsAggregator;
+import androidx.core.view.PointerIconCompat;
 
 import com.demo.smarthome.service.Cfg;
 

@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Animatable;
@@ -67,7 +68,7 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
 
     @Override // android.graphics.drawable.Drawable
     public int getOpacity() {
-        return -3;
+        return PixelFormat.TRANSLUCENT;
     }
 
     public MaterialProgressDrawable(Context context, View view) {

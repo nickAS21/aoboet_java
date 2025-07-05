@@ -28,6 +28,8 @@ import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import androidx.core.content.ContextCompat;
+
 import com.dcloud.android.v4.widget.IRefreshAble;
 import com.dcloud.zxing.common.StringUtils;
 
@@ -340,8 +342,8 @@ public class WebViewImpl extends WebView implements DownloadListener, IRefreshAb
         this.webSettings.setSupportZoom(z);
         this.webSettings.setUseWideViewPort(z);
         this.webSettings.setDatabasePath(this.mAdaWebview.obtainFrameView().obtainApp().obtainAppWebCachePath());
-        this.webSettings.setAppCacheEnabled(true);
-        this.webSettings.setAppCachePath(this.mAdaWebview.obtainFrameView().obtainApp().obtainAppWebCachePath());
+//        this.webSettings.setAppCacheEnabled(true);
+//        this.webSettings.setAppCachePath(this.mAdaWebview.obtainFrameView().obtainApp().obtainAppWebCachePath());
         this.webSettings.setDatabaseEnabled(true);
         if (DeviceInfo.sDeviceSdkVer >= 7) {
 //            long j = this.mContext.getSharedPreferences(IApp.obtainAppId(), 0).getLong("maxSize", 0L);
@@ -398,7 +400,7 @@ public class WebViewImpl extends WebView implements DownloadListener, IRefreshAb
                         if (BaseInfo.sRuntimeMode == null) {
                             IntentFilter intentFilter = new IntentFilter();
                             intentFilter.addAction(DownloadReceiver.ACTION_OPEN_FILE);
-                            context.registerReceiver(new DownloadReceiver(), intentFilter);
+                            ContextCompat.registerReceiver(context, new DownloadReceiver(), intentFilter, ContextCompat.RECEIVER_NOT_EXPORTED);
                             Intent intent = new Intent();
                             intent.setAction(DownloadReceiver.ACTION_OPEN_FILE);
                             intent.putExtra(DownloadReceiver.KEY_FILEURI, String.valueOf(obj));

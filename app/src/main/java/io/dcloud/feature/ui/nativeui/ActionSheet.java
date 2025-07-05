@@ -235,7 +235,7 @@ public class ActionSheet extends Dialog implements View.OnClickListener {
     }
 
     private int a(int i) {
-        return (int) TypedValue.applyDimension(1, i, this.a.getResources().getDisplayMetrics());
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, i, this.a.getResources().getDisplayMetrics());
     }
 
     public LinearLayout.LayoutParams b() {

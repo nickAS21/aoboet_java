@@ -46,18 +46,25 @@ public class AESUtil {
         return getRawKey(bArr, 256);
     }
 
-    private static byte[] getRawKey(byte[] bArr, int i) throws Exception {
+    private static byte[] getRawKey(byte[] seed, int keySizeInBits) throws Exception {
         SecureRandom secureRandom;
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        if (Build.VERSION.SDK_INT >= 17) {
-            secureRandom = SecureRandom.getInstance("SHA1PRNG", "Crypto");
+
+        // БЕЗ "Crypto" провайдера
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Android 8+ (опційно: краще entropy)
+            secureRandom = SecureRandom.getInstanceStrong(); // SHA1PRNG не гарантовано доступний
         } else {
+            // старіші версії
             secureRandom = SecureRandom.getInstance("SHA1PRNG");
         }
-        secureRandom.setSeed(bArr);
-        keyGenerator.init(i, secureRandom);
+
+        secureRandom.setSeed(seed);
+
+        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+        keyGenerator.init(keySizeInBits, secureRandom);
         return keyGenerator.generateKey().getEncoded();
     }
+
 
     private static byte[] encrypt(byte[] bArr, byte[] bArr2, String str, byte[] bArr3) throws Exception {
         SecretKeySpec secretKeySpec = new SecretKeySpec(bArr, "AES");

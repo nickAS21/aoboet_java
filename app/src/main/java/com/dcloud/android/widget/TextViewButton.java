@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 
 /* loaded from: classes.dex */
-public class TextViewButton extends TextView {
+public class TextViewButton extends androidx.appcompat.widget.AppCompatTextView {
     public TextViewButton(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
     }

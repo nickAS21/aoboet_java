@@ -5,12 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 import io.dcloud.common.adapter.util.CanvasHelper;
 
 /* loaded from: classes.dex */
-public class RoundAngleImageView extends ImageView {
+public class RoundAngleImageView extends androidx.appcompat.widget.AppCompatImageView {
     Path path;
 
     public RoundAngleImageView(Context context, AttributeSet attributeSet) {

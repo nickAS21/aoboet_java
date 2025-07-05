@@ -118,14 +118,14 @@ public class NavigatorUIFeatureImpl implements IFeature {
         if (ShortcutCreateUtil.isDuplicateLauncher(activity)) {
             if (ShortCutUtil.createShortcutToDeskTop(activity, obtainAppId, obtainAppName, bitmap, stringExtra, jSONObject, true)) {
                 if (!TextUtils.isEmpty(str3) && ShortcutCreateUtil.needToast(activity)) {
-                    Toast.makeText(activity, str3, 1).show();
+                    Toast.makeText(activity, str3, Toast.LENGTH_LONG).show();
                 }
                 ShortCutUtil.commitShortcut(obtainApp, 11, 1);
             }
         } else if (!ShortCutUtil.hasShortcut(activity, obtainAppName)) {
             if (z) {
                 if (!TextUtils.isEmpty(str3)) {
-                    Toast.makeText(activity, str3, 1).show();
+                    Toast.makeText(activity, str3, Toast.LENGTH_LONG).show();
                 }
                 ShortCutUtil.createShortcutToDeskTop(activity, obtainAppId, obtainAppName, bitmap, stringExtra, jSONObject, true);
                 ShortCutUtil.commitShortcut(obtainApp, 11, 1);
@@ -135,7 +135,7 @@ public class NavigatorUIFeatureImpl implements IFeature {
                 }
                 if (ShortCutUtil.createShortcutToDeskTop(activity, obtainAppId, obtainAppName, bitmap, stringExtra, jSONObject, true)) {
                     if (!TextUtils.isEmpty(str3) && ShortcutCreateUtil.needToast(activity)) {
-                        Toast.makeText(activity, str3, 1).show();
+                        Toast.makeText(activity, str3, Toast.LENGTH_LONG).show();
                     }
                     ShortCutUtil.commitShortcut(obtainApp, 11, 1);
                 }

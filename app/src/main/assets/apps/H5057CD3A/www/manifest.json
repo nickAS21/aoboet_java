@@ -74,8 +74,8 @@
 	},
 	"plus": {
 		"splashscreen": {
-			"autoclose": false,
-			"waiting": true,
+			"autoclose": true,
+			"waiting": false,
 			"delay": "100"
 		},
 		"runmode": "liberate",

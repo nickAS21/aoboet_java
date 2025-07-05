@@ -2,6 +2,7 @@ package com.dcloud.android.v4.view;
 
 import android.content.res.ColorStateList;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -665,7 +666,7 @@ public class ViewCompat {
         @Override // com.dcloud.android.v4.view.ViewCompat.ViewCompatImpl
         public boolean isOpaque(View view) {
             Drawable background = view.getBackground();
-            return background != null && background.getOpacity() == -1;
+            return background != null && background.getOpacity() == PixelFormat.OPAQUE;
         }
 
         @Override // com.dcloud.android.v4.view.ViewCompat.ViewCompatImpl

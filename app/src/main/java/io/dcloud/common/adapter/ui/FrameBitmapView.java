@@ -165,7 +165,7 @@ public class FrameBitmapView extends View {
                 this.mPaint.setTextSize(convertToScreenInt5);
                 this.mPaint.setColor(PdrUtil.stringToColor(str8));
                 if (!TextUtils.isEmpty(str4)) {
-                    this.mPaint.setTypeface(Typeface.create(str4, 0));
+                    this.mPaint.setTypeface(Typeface.create(str4, Typeface.NORMAL));
                 }
                 this.mTextRect = new RectF(convertToScreenInt + convertToScreenInt6, convertToScreenInt2 + convertToScreenInt6, convertToScreenInt3 - convertToScreenInt6, convertToScreenInt4 - convertToScreenInt6);
                 this.mPaint.setFakeBoldText(str9.equals(BOLD));
@@ -193,7 +193,7 @@ public class FrameBitmapView extends View {
             }
         }
         if (this.mNativeBitmap == null) {
-            setVisibility(8);
+            setVisibility(View.GONE);
         }
     }
 

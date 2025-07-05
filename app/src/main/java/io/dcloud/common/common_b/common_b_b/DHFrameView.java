@@ -25,8 +25,7 @@ import io.dcloud.common.adapter.util.MessageHandler;
 import io.dcloud.common.adapter.util.ViewOptions;
 import io.dcloud.common.constant.AbsoluteConst;
 import io.dcloud.common.util.BaseInfo;
-import io.dcloud.nineoldandroids.animation.Animator;
-import io.dcloud.nineoldandroids.view.ViewHelper;
+import android.animation.Animator;
 
 /* JADX INFO: Access modifiers changed from: package-private */
 /* compiled from: DHFrameView.java */
@@ -77,11 +76,11 @@ public class DHFrameView extends AdaFrameView {
         this.u = true;
         this.p = null;
         this.q = new Animator.AnimatorListener() { // from class: io.dcloud.common.b.b.d.2
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationRepeat(Animator animator) {
             }
 
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationEnd(Animator animator) {
                 Logger.e("DHFrameView", "---------------------onAnimationEnd");
                 if (DHFrameView.this.getAnimOptions().mOption == 3) {
@@ -130,12 +129,12 @@ public class DHFrameView extends AdaFrameView {
                 }
             }
 
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationCancel(Animator animator) {
                 BaseInfo.sDoingAnimation = false;
             }
 
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationStart(Animator animator) {
                 Logger.e("DHFrameView", "---------------------onAnimationStart");
                 BaseInfo.sDoingAnimation = true;
@@ -395,12 +394,12 @@ public class DHFrameView extends AdaFrameView {
     public void l() {
         dispatchFrameViewEvents(AbsoluteConst.EVENTS_WEBVIEW_HIDE, null);
         if (!this.mViewOptions.hasBackground() && !this.isChildOfFrameView) {
-            ViewHelper.setX(obtainMainView(), this.mViewOptions.left);
-            ViewHelper.setY(obtainMainView(), this.mViewOptions.top);
-            ViewHelper.setScaleX(obtainMainView(), 1.0f);
-            ViewHelper.setScaleY(obtainMainView(), 1.0f);
+            obtainMainView().setX(this.mViewOptions.left);
+            obtainMainView().setY(this.mViewOptions.top);
+            obtainMainView().setScaleX(1.0f);
+            obtainMainView().setScaleY(1.0f);
             if (!this.mViewOptions.hasTransparentValue()) {
-                ViewHelper.setAlpha(obtainMainView(), 1.0f);
+                obtainMainView().setAlpha(1.0f);
             }
         }
         if (this.mViewOptions_animate != null) {

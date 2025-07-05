@@ -190,7 +190,13 @@ public class ShortCutUtil {
                 } else {
                     Logger.e("shortcututil", "c != null && c.getCount() > 0");
                     while (query.moveToNext()) {
-                        String string = query.getString(query.getColumnIndex("intent"));
+//                        String string = query.getString(query.getColumnIndex("intent"));
+                        int columnIndex = query.getColumnIndex("intent");
+                        String string = null;
+                        if (columnIndex >= 0) {
+                            string = query.getString(columnIndex);
+                        }
+
                         if (TextUtils.isEmpty(string)) {
                             str2 = SHORT_CUT_NONE;
                         } else {
@@ -240,8 +246,19 @@ public class ShortCutUtil {
             Cursor query = context.getContentResolver().query(getUriFromLauncher(context), new String[]{AbsoluteConst.JSON_KEY_TITLE, "intent"}, null, null, null);
             if (query != null && query.getCount() > 0) {
                 while (query.moveToNext()) {
-                    String string = query.getString(query.getColumnIndex("intent"));
-                    String string2 = query.getString(query.getColumnIndex(AbsoluteConst.JSON_KEY_TITLE));
+//                    String string = query.getString(query.getColumnIndex("intent"));
+                    int columnIndex = query.getColumnIndex("intent");
+                    String string = null;
+                    if (columnIndex >= 0) {
+                        string = query.getString(columnIndex);
+                    }
+//                    String string2 = query.getString(query.getColumnIndex(AbsoluteConst.JSON_KEY_TITLE));
+                    int columnIndex2 = query.getColumnIndex(AbsoluteConst.JSON_KEY_TITLE);
+                    String string2 = null;
+                    if (columnIndex2 >= 0) {
+                        string2 = query.getString(columnIndex);
+                    }
+
                     if (!TextUtils.isEmpty(string2) && !TextUtils.isEmpty(string) && string.contains(IntentConst.SHORT_CUT_APPID)) {
                         JSONObject jSONObject = new JSONObject();
                         if (BaseInfo.isStreamApp(context)) {

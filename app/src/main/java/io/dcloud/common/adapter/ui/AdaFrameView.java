@@ -36,19 +36,18 @@ import io.dcloud.common.adapter.util.MessageHandler;
 import io.dcloud.common.adapter.util.PlatformUtil;
 import io.dcloud.common.adapter.util.ViewOptions;
 import io.dcloud.common.adapter.util.ViewRect;
-import io.dcloud.common.common_b.common_b_b.e;
+import io.dcloud.common.common_b.common_b_b.DHImageView;
 import io.dcloud.common.common_b.common_b_b.k;
 import io.dcloud.common.constant.AbsoluteConst;
 import io.dcloud.common.util.BaseInfo;
 import io.dcloud.common.util.PdrUtil;
-import io.dcloud.nineoldandroids.animation.Animator;
-import io.dcloud.nineoldandroids.view.ViewHelper;
+import android.animation.Animator;
 
 /* loaded from: classes.dex */
 public abstract class AdaFrameView extends AdaContainerFrameItem implements IFrameView {
     private static final int ERROR = 0;
     private static final int SUCCESS = 1;
-    static e mPageCImageView;
+    static DHImageView mPageCImageView;
     public boolean interceptTouchEvent;
     public boolean isChildOfFrameView;
     public boolean isSlipping;
@@ -244,7 +243,7 @@ public abstract class AdaFrameView extends AdaContainerFrameItem implements IFra
                 return false;
             }
             if (mPageCImageView == null) {
-                e c = kVar.c();
+                DHImageView c = kVar.c();
                 mPageCImageView = c;
                 c.setScaleType(ImageView.ScaleType.FIT_XY);
             }
@@ -283,12 +282,12 @@ public abstract class AdaFrameView extends AdaContainerFrameItem implements IFra
                 mPageCImageView.setLayoutParams(new FrameLayout.LayoutParams(viewGroup.getMeasuredWidth(), viewGroup.getMeasuredHeight()));
                 addCaptureImageView(kVar, mPageCImageView, bitmap);
                 viewGroup.setVisibility(View.INVISIBLE);
-                ViewHelper.setX(mPageCImageView, this.mViewOptions.left);
-                ViewHelper.setY(mPageCImageView, this.mViewOptions.top);
+                mPageCImageView.setX(this.mViewOptions.left);
+                mPageCImageView.setY(this.mViewOptions.top);
                 if (this.mAnimOptions.mAnimator == null) {
                     animator.setTarget(mPageCImageView);
                     animator.addListener(new Animator.AnimatorListener() { // from class: io.dcloud.common.adapter.ui.AdaFrameView.1
-                        @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+                        @Override // android.animation.Animator.AnimatorListener
                         public void onAnimationStart(Animator animator2) {
                             if (AdaFrameView.mPageCImageView != null) {
                                 AdaFrameView.mPageCImageView.b(true);
@@ -299,14 +298,14 @@ public abstract class AdaFrameView extends AdaContainerFrameItem implements IFra
                             }
                         }
 
-                        @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+                        @Override // android.animation.Animator.AnimatorListener
                         public void onAnimationRepeat(Animator animator2) {
                             if (AdaFrameView.this.mAnimatorListener != null) {
                                 AdaFrameView.this.mAnimatorListener.onAnimationRepeat(animator2);
                             }
                         }
 
-                        @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+                        @Override // android.animation.Animator.AnimatorListener
                         public void onAnimationEnd(Animator animator2) {
                             if (AdaFrameView.mPageCImageView != null) {
                                 AdaFrameView.mPageCImageView.b(false);
@@ -335,7 +334,7 @@ public abstract class AdaFrameView extends AdaContainerFrameItem implements IFra
                             animator.removeListener(this);
                         }
 
-                        @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+                        @Override // android.animation.Animator.AnimatorListener
                         public void onAnimationCancel(Animator animator2) {
                             BaseInfo.sDoingAnimation = false;
                             if (BaseInfo.sOpenedCount == 0) {
@@ -422,13 +421,13 @@ public abstract class AdaFrameView extends AdaContainerFrameItem implements IFra
                 if (this.mAnimOptions.mAnimator == null) {
                     createAnimation.start();
                 } else {
-                    e eVar = mPageCImageView;
+                    DHImageView eVar = mPageCImageView;
                     if (eVar != null) {
                         eVar.startAnimation(this.mAnimOptions.mAnimator);
                     }
                 }
             } else {
-                e eVar2 = mPageCImageView;
+                DHImageView eVar2 = mPageCImageView;
                 if (eVar2 != null && !eVar2.a()) {
                     mPageCImageView.clearAnimation();
                     mPageCImageView.setVisibility(View.INVISIBLE);
@@ -596,9 +595,9 @@ public abstract class AdaFrameView extends AdaContainerFrameItem implements IFra
             }
         }
         if (this.mAnimationCapture) {
-            ViewHelper.setX(this.mViewImpl, this.mViewOptions.left);
-            ViewHelper.setY(this.mViewImpl, this.mViewOptions.top);
-            Logger.d(Logger.LAYOUT_TAG, "mViewImpl onAnimationEnd X=" + ViewHelper.getX(this.mViewImpl) + "Y=" + ViewHelper.getY(this.mViewImpl), this.mViewImpl);
+            this.mViewImpl.setX(this.mViewOptions.left);
+            this.mViewImpl.setY(this.mViewOptions.top);
+            Logger.d(Logger.LAYOUT_TAG, "mViewImpl onAnimationEnd X=" + this.mViewImpl.getX() + "Y=" + this.mViewImpl.getY(), this.mViewImpl);
         }
         if (obtainMainView != null) {
             obtainMainView().invalidate();
@@ -609,7 +608,7 @@ public abstract class AdaFrameView extends AdaContainerFrameItem implements IFra
     public boolean onDispose() {
         boolean onDispose = super.onDispose();
         dispatchFrameViewEvents(AbsoluteConst.EVENTS_CLOSE, obtainWebView());
-        e eVar = mPageCImageView;
+        DHImageView eVar = mPageCImageView;
         if (eVar != null) {
             eVar.setImageBitmap(null);
         }
@@ -706,7 +705,7 @@ public abstract class AdaFrameView extends AdaContainerFrameItem implements IFra
 
     @Override // io.dcloud.common.DHInterface.IFrameView
     public void clearSnapshot(String str) {
-        e eVar = mPageCImageView;
+        DHImageView eVar = mPageCImageView;
         if (eVar != null) {
             eVar.setImageBitmap(null);
         }

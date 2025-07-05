@@ -19,6 +19,7 @@ import android.webkit.CookieSyncManager;
 import android.webkit.MimeTypeMap;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceResponse;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AbsoluteLayout;
@@ -848,7 +849,8 @@ public final class WebLoadEvent extends WebViewClient {
             this.mAdaWebview.mWebViewImpl.clearHistory();
             this.mAdaWebview.justClearOption = false;
         }
-        this.mAdaWebview.mWebViewImpl.webSettings.setCacheMode(this.mAdaWebview.getCacheMode());
+//        this.mAdaWebview.mWebViewImpl.webSettings.setCacheMode(this.mAdaWebview.getCacheMode());
+        this.mAdaWebview.mWebViewImpl.webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
         OnPageFinishedCallack onPageFinishedCallack = this.mPageFinishedCallack;
         if (onPageFinishedCallack != null) {
             onPageFinishedCallack.onLoad();

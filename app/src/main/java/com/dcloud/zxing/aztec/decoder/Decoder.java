@@ -1,6 +1,6 @@
 package com.dcloud.zxing.aztec.decoder;
 
-import android.support.v4.view.PointerIconCompat;
+import androidx.core.view.PointerIconCompat;
 
 import com.dcloud.zxing.FormatException;
 import com.dcloud.zxing.aztec.AztecDetectorResult;

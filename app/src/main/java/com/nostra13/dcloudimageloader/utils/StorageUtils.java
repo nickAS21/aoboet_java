@@ -1,6 +1,7 @@
 package com.nostra13.dcloudimageloader.utils;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Environment;
 
 import java.io.File;
@@ -62,6 +63,6 @@ public final class StorageUtils {
     }
 
     private static boolean hasExternalStoragePermission(Context context) {
-        return context.checkCallingOrSelfPermission(EXTERNAL_STORAGE_PERMISSION) == 0;
+        return context.checkCallingOrSelfPermission(EXTERNAL_STORAGE_PERMISSION) == PackageManager.PERMISSION_GRANTED;
     }
 }

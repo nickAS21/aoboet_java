@@ -64,7 +64,7 @@ public class DBackGround extends View {
         if (this.C == null) {
             this.C = getResources().getDisplayMetrics();
         }
-        return TypedValue.applyDimension(1, f, this.C);
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, f, this.C);
     }
 
     public void a(Bitmap bitmap) {

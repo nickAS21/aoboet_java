@@ -91,7 +91,7 @@ public abstract class AndroidResources {
 
     public static int getIdentifierFromApk(Context context, String str, String str2) {
         try {
-            return context.createPackageContext(context.getPackageName(), 2).getResources().getIdentifier(str, str2, context.getPackageName());
+            return context.createPackageContext(context.getPackageName(), Context.CONTEXT_IGNORE_SECURITY).getResources().getIdentifier(str, str2, context.getPackageName());
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             return 0;

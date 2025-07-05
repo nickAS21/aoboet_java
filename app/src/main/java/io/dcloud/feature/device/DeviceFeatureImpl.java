@@ -1,5 +1,6 @@
 package io.dcloud.feature.device;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -148,21 +149,21 @@ public class DeviceFeatureImpl implements IFeature, ISysEventListener {
                             } catch (NumberFormatException e3) {
                                 e3.printStackTrace();
                             }
-                            ((Vibrator) this.f.getSystemService("vibrator")).vibrate(j);
+                            ((Vibrator) this.f.getSystemService(Context.VIBRATOR_SERVICE)).vibrate(j);
                         } else if ("setVolume".equals(str)) {
                             float parseFloat = Float.parseFloat(strArr[0]);
-                            AudioManager audioManager = (AudioManager) iWebview.getContext().getSystemService("audio");
+                            AudioManager audioManager = (AudioManager) iWebview.getContext().getSystemService(Context.AUDIO_SERVICE);
                             int a = a(parseFloat);
-                            audioManager.setStreamVolume(4, a, 8);
-                            audioManager.setStreamVolume(8, a, 8);
-                            audioManager.setStreamVolume(3, a, 8);
-                            audioManager.setStreamVolume(5, a, 8);
-                            audioManager.setStreamVolume(2, a, 8);
-                            audioManager.setStreamVolume(1, a, 8);
-                            audioManager.setStreamVolume(0, a, 8);
+                            audioManager.setStreamVolume(4, a, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                            audioManager.setStreamVolume(8, a, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                            audioManager.setStreamVolume(3, a, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                            audioManager.setStreamVolume(5, a, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                            audioManager.setStreamVolume(2, a, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                            audioManager.setStreamVolume(1, a, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
+                            audioManager.setStreamVolume(0, a, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
                         } else {
                             if ("getVolume".equals(str)) {
-                                return JSUtil.wrapJsVar(String.valueOf(((AudioManager) iWebview.getContext().getSystemService("audio")).getStreamVolume(3) / this.a), false);
+                                return JSUtil.wrapJsVar(String.valueOf(((AudioManager) iWebview.getContext().getSystemService(Context.AUDIO_SERVICE)).getStreamVolume(3) / this.a), false);
                             }
                             if ("s.resolutionHeight".equals(str)) {
                                 IApp obtainApp = iWebview.obtainApp();
@@ -251,15 +252,15 @@ public class DeviceFeatureImpl implements IFeature, ISysEventListener {
 
     @Override // io.dcloud.common.DHInterface.IFeature
     public void init(AbsMgr absMgr, String str) {
-        SensorManager sensorManager = (SensorManager) absMgr.getContext().getSystemService("sensor");
+        SensorManager sensorManager = (SensorManager) absMgr.getContext().getSystemService(Context.SENSOR_SERVICE);
         this.b = sensorManager;
         this.d = sensorManager.getDefaultSensor(1);
         Context context = absMgr.getContext();
         this.f = context;
-        PowerManager.WakeLock newWakeLock = ((PowerManager) context.getSystemService("power")).newWakeLock(10, "My Lock");
+        @SuppressLint("InvalidWakeLockTag") PowerManager.WakeLock newWakeLock = ((PowerManager) context.getSystemService(Context.POWER_SERVICE)).newWakeLock(10, "My Lock");
         this.c = newWakeLock;
         newWakeLock.setReferenceCounted(false);
-        this.a = ((AudioManager) absMgr.getContext().getSystemService("audio")).getStreamMaxVolume(3);
+        this.a = ((AudioManager) absMgr.getContext().getSystemService(Context.AUDIO_SERVICE)).getStreamMaxVolume(3);
     }
 
     @Override // io.dcloud.common.DHInterface.ISysEventListener

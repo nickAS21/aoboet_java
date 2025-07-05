@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.view.PointerIconCompat;
+import androidx.core.view.PointerIconCompat;
 
 import com.dcloud.zxing.BinaryBitmap;
 import com.dcloud.zxing.DecodeHintType;

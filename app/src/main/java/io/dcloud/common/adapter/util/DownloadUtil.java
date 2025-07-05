@@ -1,5 +1,6 @@
 package io.dcloud.common.adapter.util;
 
+import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 
 import java.io.File;
@@ -26,8 +28,12 @@ public class DownloadUtil extends BroadcastReceiver {
 
     private DownloadUtil(Context context) {
         this.rs = null;
-        this.mDownloader = (DownloadManager) context.getSystemService(AbsoluteConst.SPNAME_DOWNLOAD);
-        context.registerReceiver(this, new IntentFilter("android.intent.action.DOWNLOAD_COMPLETE"));
+        this.mDownloader = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        IntentFilter filter = new IntentFilter("android.intent.action.DOWNLOAD_COMPLETE");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.registerReceiver(this, filter, Context.RECEIVER_NOT_EXPORTED);
+        }
+
         this.rs = new HashMap<>(2);
     }
 
@@ -75,7 +81,7 @@ public class DownloadUtil extends BroadcastReceiver {
             query.setFilterById(longValue);
             Cursor query2 = this.mDownloader.query(query);
             if (query2.moveToFirst()) {
-                int i2 = query2.getInt(query2.getColumnIndex("status"));
+                @SuppressLint("Range") int i2 = query2.getInt(query2.getColumnIndex("status"));
                 if (i2 != 1) {
                     if (i2 != 2) {
                         if (i2 == 4) {

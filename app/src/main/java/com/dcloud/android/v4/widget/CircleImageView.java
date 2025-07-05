@@ -15,7 +15,7 @@ import com.dcloud.android.v4.view.ViewCompat;
 
 /* JADX INFO: Access modifiers changed from: package-private */
 /* loaded from: classes.dex */
-public class CircleImageView extends ImageView {
+public class CircleImageView extends androidx.appcompat.widget.AppCompatImageView {
     private static final int FILL_SHADOW_COLOR = 1023410176;
     private static final int KEY_SHADOW_COLOR = 1577058304;
     private static final int SHADOW_ELEVATION = 4;

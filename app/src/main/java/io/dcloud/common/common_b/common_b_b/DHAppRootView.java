@@ -85,7 +85,7 @@ public class DHAppRootView extends AdaContainerFrameItem implements ISysEventLis
     private ArrayList<ICallBack> q;
     private d r;
     private e s;
-    private io.dcloud.common.common_b.common_b_b.e t;
+    private DHImageView t;
 
     private void a(View view) {
     }
@@ -466,7 +466,7 @@ public class DHAppRootView extends AdaContainerFrameItem implements ISysEventLis
         if (runnableC0005c != null) {
             runnableC0005c.b = false;
         }
-        io.dcloud.common.common_b.common_b_b.e eVar = this.t;
+        DHImageView eVar = this.t;
         if (eVar != null) {
             eVar.setImageBitmap(null);
             this.t = null;
@@ -1267,14 +1267,14 @@ public class DHAppRootView extends AdaContainerFrameItem implements ISysEventLis
         animOptions.mAnimType_close = this.m;
     }
 
-    public io.dcloud.common.common_b.common_b_b.e a(DHFrameView dVar, int i, boolean z) {
+    public DHImageView a(DHFrameView dVar, int i, boolean z) {
         Bitmap captureView;
         boolean z2;
-        io.dcloud.common.common_b.common_b_b.e eVar;
+        DHImageView eVar;
         long currentTimeMillis = System.currentTimeMillis();
         b bVar = (b) obtainMainView();
         if (a((ViewGroup) bVar)) {
-            io.dcloud.common.common_b.common_b_b.e eVar2 = this.t;
+            DHImageView eVar2 = this.t;
             if (eVar2 != null) {
                 eVar2.setImageBitmap(null);
                 this.t = null;
@@ -1313,7 +1313,7 @@ public class DHAppRootView extends AdaContainerFrameItem implements ISysEventLis
             this.t.setImageBitmap(captureView);
             this.t.setVisibility(View.VISIBLE);
         } else {
-            io.dcloud.common.common_b.common_b_b.e eVar3 = this.t;
+            DHImageView eVar3 = this.t;
             if (eVar3 != null) {
                 eVar3.setImageBitmap(null);
                 this.t = null;
@@ -1337,7 +1337,7 @@ public class DHAppRootView extends AdaContainerFrameItem implements ISysEventLis
     }
 
     public boolean a(ViewGroup viewGroup) {
-        io.dcloud.common.common_b.common_b_b.e eVar = this.t;
+        DHImageView eVar = this.t;
         return (eVar == null || eVar.c <= 0 || ((long) viewGroup.getHeight()) == this.t.c) ? false : true;
     }
 }

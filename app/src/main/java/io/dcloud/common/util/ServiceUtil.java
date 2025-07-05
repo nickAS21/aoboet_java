@@ -8,7 +8,7 @@ import java.util.Iterator;
 /* loaded from: classes.dex */
 public class ServiceUtil {
     public static boolean isServiceRunning(Context context, Class<?> cls) {
-        Iterator<ActivityManager.RunningServiceInfo> it = ((ActivityManager) context.getSystemService("activity")).getRunningServices(1024).iterator();
+        Iterator<ActivityManager.RunningServiceInfo> it = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getRunningServices(1024).iterator();
         while (it.hasNext()) {
             if (cls.getName().equals(it.next().service.getClassName())) {
                 return true;

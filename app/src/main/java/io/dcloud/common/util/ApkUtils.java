@@ -150,7 +150,7 @@ public class ApkUtils {
     public static void uninstall(Context context, String str) {
         try {
             Intent intent = new Intent("android.intent.action.DELETE", Uri.fromParts("package", str, null));
-            intent.addFlags(268435456);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,6 +1,6 @@
 package com.dcloud.zxing.pdf417.encoder;
 
-import android.support.v4.app.FrameMetricsAggregator;
+import androidx.core.app.FrameMetricsAggregator;
 
 import com.dcloud.zxing.WriterException;
 import com.dcloud.zxing.pdf417.PDF417Common;

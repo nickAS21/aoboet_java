@@ -116,7 +116,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     }
 
     public void init(Context context) {
-        setOrientation(1);
+        setOrientation(LinearLayout.VERTICAL);
         this.mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
         this.mHeaderLayout = createHeaderLoadingLayout(context);
         this.mFooterLayout = createFooterLoadingLayout(context);

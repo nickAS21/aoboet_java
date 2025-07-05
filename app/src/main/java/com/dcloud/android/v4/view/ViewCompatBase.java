@@ -58,46 +58,12 @@ class ViewCompatBase {
 
     /* JADX INFO: Access modifiers changed from: package-private */
     public static int getMinimumWidth(View view) {
-        if (!sMinWidthFieldFetched) {
-            try {
-                Field declaredField = View.class.getDeclaredField("mMinWidth");
-                sMinWidthField = declaredField;
-                declaredField.setAccessible(true);
-            } catch (NoSuchFieldException unused) {
-            }
-            sMinWidthFieldFetched = true;
-        }
-        Field field = sMinWidthField;
-        if (field == null) {
-            return 0;
-        }
-        try {
-            return ((Integer) field.get(view)).intValue();
-        } catch (Exception unused2) {
-            return 0;
-        }
+        return view != null ? view.getMinimumWidth() : 0;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
     public static int getMinimumHeight(View view) {
-        if (!sMinHeightFieldFetched) {
-            try {
-                Field declaredField = View.class.getDeclaredField("mMinHeight");
-                sMinHeightField = declaredField;
-                declaredField.setAccessible(true);
-            } catch (NoSuchFieldException unused) {
-            }
-            sMinHeightFieldFetched = true;
-        }
-        Field field = sMinHeightField;
-        if (field == null) {
-            return 0;
-        }
-        try {
-            return ((Integer) field.get(view)).intValue();
-        } catch (Exception unused2) {
-            return 0;
-        }
+        return view != null ? view.getMinimumHeight() : 0;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */

@@ -49,7 +49,7 @@ public class UDPSocketServer {
             this.mServerSocket = datagramSocket;
             datagramSocket.setSoTimeout(i2);
             this.mIsClosed = false;
-            this.mLock = ((WifiManager) this.mContext.getSystemService("wifi")).createMulticastLock("test wifi");
+            this.mLock = ((WifiManager) this.mContext.getSystemService(Context.WIFI_SERVICE)).createMulticastLock("test wifi");
             Log.d(TAG, "mServerSocket is created, socket read timeout: " + i2 + ", port: " + i);
         } catch (IOException e) {
             Log.e(TAG, "IOException");

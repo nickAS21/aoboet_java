@@ -1,5 +1,6 @@
 package io.dcloud.js.gallery;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.support.v4.view.PointerIconCompat;
+import androidx.core.view.PointerIconCompat;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -331,7 +332,7 @@ public class GalleryFeatureImpl implements IFeature {
             return null;
         }
         query.moveToFirst();
-        String string = query.getString(query.getColumnIndex(strArr[0]));
+        @SuppressLint("Range") String string = query.getString(query.getColumnIndex(strArr[0]));
         query.close();
         return string;
     }

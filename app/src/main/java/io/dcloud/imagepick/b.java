@@ -39,7 +39,7 @@ public class b extends BaseAdapter {
     }
 
     public b(Context context, ImageLoader imageLoader, int i) {
-        this.b = (LayoutInflater) context.getSystemService("layout_inflater");
+        this.b = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         a(context, i);
         this.h = new DisplayImageOptions.Builder().cacheInMemory(true).showImageOnLoading(DCloudAdapterUtil.getImagePickNoMediaId(context)).cacheOnDisc(true).bitmapConfig(Bitmap.Config.RGB_565).build();
     }
@@ -125,9 +125,9 @@ public class b extends BaseAdapter {
         }
         a aVar2 = (a) view.getTag();
         if (this.c.get(i).b) {
-            aVar2.b.setVisibility(0);
+            aVar2.b.setVisibility(View.VISIBLE);
         } else {
-            aVar2.b.setVisibility(8);
+            aVar2.b.setVisibility(View.GONE);
         }
         return aVar.b;
     }
@@ -152,9 +152,9 @@ public class b extends BaseAdapter {
             ImageLoader.getInstance().displayImage(DeviceInfo.FILE_PROTOCOL + this.c.get(i).a, aVar.a, this.h);
             if (this.f) {
                 if (this.c.get(i).b) {
-                    aVar.b.setVisibility(0);
+                    aVar.b.setVisibility(View.VISIBLE);
                 } else {
-                    aVar.b.setVisibility(8);
+                    aVar.b.setVisibility(View.GONE);
                 }
             }
         } catch (Exception e) {

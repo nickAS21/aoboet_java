@@ -15,7 +15,7 @@ public class NetworkTypeUtil {
     public static final int NETWORK_TYPE_WIFI = 3;
 
     public static int getNetworkType(Context context) {
-        NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService("connectivity")).getActiveNetworkInfo();
+        NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         if (activeNetworkInfo == null || !activeNetworkInfo.isAvailable()) {
             return 1;
         }
@@ -49,7 +49,7 @@ public class NetworkTypeUtil {
     }
 
     public static String getCurrentAPN(Context context) {
-        NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService("connectivity")).getActiveNetworkInfo();
+        NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         return (activeNetworkInfo == null || activeNetworkInfo.getType() != 0) ? "" : activeNetworkInfo.getExtraInfo();
     }
 }

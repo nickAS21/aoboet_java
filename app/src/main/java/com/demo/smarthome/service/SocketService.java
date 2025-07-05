@@ -167,7 +167,7 @@ public class SocketService extends Service {
 
     public void myMethod(int i) {
         Log.i(TAG, " myMethod args:" + i);
-        Toast.makeText(this, "����ִ��", 0).show();
+        Toast.makeText(this, "����ִ��", Toast.LENGTH_SHORT).show();
     }
 
     public void socketReConnect() {

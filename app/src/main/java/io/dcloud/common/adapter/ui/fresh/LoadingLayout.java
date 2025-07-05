@@ -71,7 +71,7 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
 
     public void show(boolean z) {
         ViewGroup.LayoutParams layoutParams;
-        if (z == (getVisibility() == 0) || (layoutParams = this.mContainer.getLayoutParams()) == null) {
+        if (z == (getVisibility() == View.VISIBLE) || (layoutParams = this.mContainer.getLayoutParams()) == null) {
             return;
         }
         if (z) {
@@ -79,7 +79,7 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
         } else {
             layoutParams.height = 0;
         }
-        setVisibility(z ? 0 : 4);
+        setVisibility(z ? View.VISIBLE : View.INVISIBLE);
     }
 
     @Override // io.dcloud.common.adapter.ui.fresh.ILoadingLayout

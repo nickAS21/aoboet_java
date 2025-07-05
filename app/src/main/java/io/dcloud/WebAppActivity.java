@@ -286,7 +286,9 @@ public class WebAppActivity extends BaseActivity {
             }
         };
         this.p = broadcastReceiver;
-        registerReceiver(broadcastReceiver, intentFilter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            registerReceiver(broadcastReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED);
+        }
         FrameSwitchView frameSwitchView = FrameSwitchView.getInstance(this.that);
         if (!frameSwitchView.isInit()) {
             frameSwitchView.initView();

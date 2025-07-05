@@ -14,10 +14,9 @@ import io.dcloud.common.adapter.util.DeviceInfo;
 import io.dcloud.common.adapter.util.ViewOptions;
 import io.dcloud.common.constant.AbsoluteConst;
 import io.dcloud.common.util.PdrUtil;
-import io.dcloud.nineoldandroids.animation.Animator;
-import io.dcloud.nineoldandroids.animation.AnimatorSet;
-import io.dcloud.nineoldandroids.animation.ObjectAnimator;
-import io.dcloud.nineoldandroids.view.ViewHelper;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 
 /* loaded from: classes.dex */
 public class AdaFrameItem  {
@@ -311,8 +310,8 @@ public class AdaFrameItem  {
             }
             layoutParams.height = layoutParams.height == -1 ? -1 : viewOptions.height;
             layoutParams.width = layoutParams.width != -1 ? viewOptions.width : -1;
-            ViewHelper.setX(obtainMainView, viewOptions.left);
-            ViewHelper.setY(obtainMainView, viewOptions.top);
+            obtainMainView.setX(viewOptions.left);
+            obtainMainView.setY(viewOptions.top);
             obtainMainView.requestLayout();
             obtainMainView.postInvalidate();
             return;
@@ -357,8 +356,8 @@ public class AdaFrameItem  {
         }
 
         public static void setViewLayoutParams(View view, int i, int i2, int i3, int i4) {
-            ViewHelper.setX(view, i);
-            ViewHelper.setY(view, i2);
+            view.setX(i);
+            view.setY(i2);
             ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
             if (layoutParams == null) {
                 view.setLayoutParams(new ViewGroup.LayoutParams(i3, i4));
@@ -382,25 +381,25 @@ public class AdaFrameItem  {
                 animatorSet.setDuration(5L);
                 animatorSet.setTarget(view);
                 animatorSet.addListener(new Animator.AnimatorListener() { // from class: io.dcloud.common.adapter.ui.AdaFrameItem.LayoutParamsUtil.1
-                    @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+                    @Override // android.animation.Animator.AnimatorListener
                     public void onAnimationEnd(Animator animator) {
                     }
 
-                    @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+                    @Override // android.animation.Animator.AnimatorListener
                     public void onAnimationRepeat(Animator animator) {
                     }
 
-                    @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+                    @Override // android.animation.Animator.AnimatorListener
                     public void onAnimationStart(Animator animator) {
                     }
 
-                    @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+                    @Override // android.animation.Animator.AnimatorListener
                     public void onAnimationCancel(Animator animator) {
                         view.postDelayed(new Runnable() { // from class: io.dcloud.common.adapter.ui.AdaFrameItem.LayoutParamsUtil.1.1
                             @Override // java.lang.Runnable
                             public void run() {
-                                ViewHelper.setX(view, i);
-                                ViewHelper.setY(view, i2);
+                                view.setX(i);
+                                view.setY(i2);
                             }
                         }, 10L);
                     }

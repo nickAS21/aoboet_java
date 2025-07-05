@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,7 +29,7 @@ public class ViewHelper {
         attributes.x = i;
         attributes.y = i2;
         attributes.width = context.getResources().getDisplayMetrics().widthPixels;
-        attributes.gravity = 48;
+        attributes.gravity = Gravity.TOP;
         window.setAttributes(attributes);
         return dialog;
     }

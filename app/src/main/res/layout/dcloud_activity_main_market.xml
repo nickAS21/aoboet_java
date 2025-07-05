@@ -24,7 +24,7 @@
             android:layout_margin="5dp"
             android:text="back"/>
     </LinearLayout>
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

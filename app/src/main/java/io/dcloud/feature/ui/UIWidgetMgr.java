@@ -30,9 +30,8 @@ import io.dcloud.common.util.BaseInfo;
 import io.dcloud.common.util.JSONUtil;
 import io.dcloud.common.util.JSUtil;
 import io.dcloud.common.util.PdrUtil;
-import io.dcloud.nineoldandroids.animation.Animator;
-import io.dcloud.nineoldandroids.animation.ValueAnimator;
-import io.dcloud.nineoldandroids.view.ViewHelper;
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 
 /* compiled from: UIWidgetMgr.java */
 /* loaded from: classes.dex  old e*/
@@ -480,7 +479,7 @@ public class UIWidgetMgr {
         }
         ofFloat.setDuration(200L);
         ofFloat.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() { // from class: io.dcloud.feature.ui.e.2
-            @Override // io.dcloud.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener
+            @Override // android.animation.ValueAnimator.AnimatorUpdateListener
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 if (view.getLayoutParams() instanceof AbsoluteLayout.LayoutParams) {
                     AbsoluteLayout.LayoutParams layoutParams = (AbsoluteLayout.LayoutParams) view.getLayoutParams();
@@ -491,24 +490,24 @@ public class UIWidgetMgr {
                     return;
                 }
                 if (view.getLayoutParams() instanceof FrameLayout.LayoutParams) {
-                    ViewHelper.setX(view, ((Float) valueAnimator.getAnimatedValue()).floatValue());
+                    view.setX(((Float) valueAnimator.getAnimatedValue()).floatValue());
                 }
             }
         });
         ofFloat.addListener(new Animator.AnimatorListener() { // from class: io.dcloud.feature.ui.e.3
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationCancel(Animator animator) {
             }
 
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationRepeat(Animator animator) {
             }
 
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationStart(Animator animator) {
             }
 
-            @Override // io.dcloud.nineoldandroids.animation.Animator.AnimatorListener
+            @Override // android.animation.Animator.AnimatorListener
             public void onAnimationEnd(Animator animator) {
                 if (iWebview != null && !TextUtils.isEmpty(str2)) {
                     String l = cVar.l();

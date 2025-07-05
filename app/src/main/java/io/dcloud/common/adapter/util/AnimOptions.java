@@ -18,9 +18,9 @@ import io.dcloud.common.constant.AbsoluteConst;
 import io.dcloud.common.util.JSONUtil;
 import io.dcloud.common.util.JSUtil;
 import io.dcloud.common.util.PdrUtil;
-import io.dcloud.nineoldandroids.animation.Animator;
-import io.dcloud.nineoldandroids.animation.AnimatorSet;
-import io.dcloud.nineoldandroids.animation.ObjectAnimator;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 
 /* loaded from: classes.dex */
 public class AnimOptions {

@@ -387,10 +387,10 @@ public final class WebJsEvent extends WebChromeClient {
         quotaUpdater.updateQuota(j2 * 2);
     }
 
-    public void onReachedMaxAppCacheSize(long j, long j2, WebStorage.QuotaUpdater quotaUpdater) {
-        Logger.i(TAG, "onReachedMaxAppCacheSize");
-        super.onReachedMaxAppCacheSize(j, j2, quotaUpdater);
-    }
+//    public void onReachedMaxAppCacheSize(long j, long j2, WebStorage.QuotaUpdater quotaUpdater) {
+//        Logger.i(TAG, "onReachedMaxAppCacheSize");
+//        super.onReachedMaxAppCacheSize(j, j2, quotaUpdater);
+//    }
 
     @Override // android.webkit.WebChromeClient
     public void onGeolocationPermissionsShowPrompt(String str, GeolocationPermissions.Callback callback) {

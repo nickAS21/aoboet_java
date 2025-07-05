@@ -105,9 +105,10 @@ abstract class BaseActivity extends DCloudReceiverActivity implements IOnCreateS
         Window window = this.that.getWindow();
         WindowManager.LayoutParams attributes = window.getAttributes();
         if (z) {
-            attributes.flags |= 67108864;
+            attributes.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
         } else {
-            attributes.flags &= -67108865;
+            attributes.flags &= ~WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+
         }
         window.setAttributes(attributes);
     }

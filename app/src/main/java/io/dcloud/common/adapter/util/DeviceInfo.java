@@ -1,5 +1,6 @@
 package io.dcloud.common.adapter.util;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -16,6 +17,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+
+import androidx.annotation.RequiresPermission;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -145,7 +148,7 @@ public class DeviceInfo {
         dpiX = displayMetrics.xdpi;
         dpiY = displayMetrics.ydpi;
         Logger.i(TAG, "init() sWifiAddr=" + sWifiAddr + ";sDeviceSdkVer=" + sDeviceSdkVer + ";sModel=" + sModel + ";sBrand=" + sBrand + ";sVendor=" + sVendor + ";sLanguage=" + sLanguage + ";dpiX=" + dpiX + ";dpiY=" + dpiY + ";package=" + context.getPackageName());
-        sConnectMgr = (ConnectivityManager) context.getSystemService("connectivity");
+        sConnectMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
     public static void initBaseFsRootPath() {
@@ -295,13 +298,14 @@ public class DeviceInfo {
 
     public static String getUpdateIMSI() {
         try {
-            sIMSI = ((TelephonyManager) sApplicationContext.getSystemService("phone")).getSubscriberId();
+            sIMSI = ((TelephonyManager) sApplicationContext.getSystemService(Context.TELEPHONY_SERVICE)).getSubscriberId();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return sIMSI;
     }
 
+    @RequiresPermission(Manifest.permission.ACCESS_FINE_LOCATION)
     public static void initGsmCdmaCell() {
         if (sNetWorkInited) {
             return;
@@ -312,7 +316,7 @@ public class DeviceInfo {
             sDeftDataNetwork = GSM_DATA_NETWORK;
         }
         Logger.i("DefaultDataNetwork：", sDeftDataNetwork);
-        TelephonyManager telephonyManager = (TelephonyManager) sApplicationContext.getSystemService("phone");
+        TelephonyManager telephonyManager = (TelephonyManager) sApplicationContext.getSystemService(Context.TELEPHONY_SERVICE);
         int phoneType = telephonyManager.getPhoneType();
         sIMEI = TelephonyUtil.getIMEI(sApplicationContext, false);
         sIMSI = TelephonyUtil.getIMSI(sApplicationContext);
@@ -358,7 +362,7 @@ public class DeviceInfo {
         if (context == null) {
             return 0L;
         }
-        ActivityManager activityManager = (ActivityManager) context.getSystemService("activity");
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
         activityManager.getMemoryInfo(memoryInfo);
         return memoryInfo.availMem;
@@ -433,7 +437,7 @@ public class DeviceInfo {
         if (i != HARDWAREACCELERATED_VIEW || sDeviceSdkVer < 11) {
             return;
         }
-        ((View) obj).setLayerType(2, null);
+        ((View) obj).setLayerType(View.LAYER_TYPE_HARDWARE, null);
     }
 
     public static void closeHardwareAccelerated(Activity activity, int i, Object obj) {
@@ -451,18 +455,18 @@ public class DeviceInfo {
         if (i != HARDWAREACCELERATED_VIEW || sDeviceSdkVer < 11) {
             return;
         }
-        ((View) obj).setLayerType(1, null);
+        ((View) obj).setLayerType(View.LAYER_TYPE_SOFTWARE, null);
     }
 
     public static void hideIME(View view) {
         IBinder windowToken;
         Context context = sApplicationContext;
         if (context != null) {
-            InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService("input_method");
+            InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
             if (view == null || (windowToken = view.getWindowToken()) == null) {
                 return;
             }
-            inputMethodManager.hideSoftInputFromWindow(windowToken, 2);
+            inputMethodManager.hideSoftInputFromWindow(windowToken, InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
 
@@ -471,9 +475,9 @@ public class DeviceInfo {
             @Override // java.util.TimerTask, java.lang.Runnable
             public void run() {
                 if (DeviceInfo.sApplicationContext != null) {
-                    InputMethodManager inputMethodManager = (InputMethodManager) DeviceInfo.sApplicationContext.getSystemService("input_method");
+                    InputMethodManager inputMethodManager = (InputMethodManager) DeviceInfo.sApplicationContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                     if (view != null) {
-                        inputMethodManager.toggleSoftInput(0, 2);
+                        inputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                     }
                 }
             }

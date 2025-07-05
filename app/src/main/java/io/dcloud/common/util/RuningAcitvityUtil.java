@@ -2,6 +2,7 @@ package io.dcloud.common.util;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.Context;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,7 +31,7 @@ public class RuningAcitvityUtil {
             Iterator<Map.Entry<String, Activity>> it = RuningActivitys.entrySet().iterator();
             return (!it.hasNext() || (value = it.next().getValue()) == null || value.isFinishing()) ? activity : value;
         }
-        ActivityManager.RunningTaskInfo runningTaskInfo = ((ActivityManager) activity.getSystemService("activity")).getRunningTasks(1).get(0);
+        ActivityManager.RunningTaskInfo runningTaskInfo = ((ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE)).getRunningTasks(1).get(0);
         return RuningActivitys.containsKey(runningTaskInfo.topActivity.getClassName()) ? RuningActivitys.get(runningTaskInfo.topActivity.getClassName()) : activity;
     }
 }

@@ -108,4 +108,21 @@
     </attr>
     <attr name="ttcIndex" format="integer">
     </attr>
+    <declare-styleable name="PropertyAnimator">
+        <attr name="propertyName" format="string" />
+    </declare-styleable>
+    <declare-styleable name="Animator">
+        <attr name="interpolator" format="reference" />
+        <attr name="duration" format="integer" />
+        <attr name="startOffset" format="integer" />
+        <attr name="repeatCount" format="integer" />
+        <attr name="repeatMode" format="integer" />
+        <attr name="valueFrom" format="float|integer|color|dimension" />
+        <attr name="valueTo" format="float|integer|color|dimension" />
+        <attr name="valueType" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="AnimatorSet">
+        <attr name="ordering" format="integer" />
+    </declare-styleable>
 </resources>

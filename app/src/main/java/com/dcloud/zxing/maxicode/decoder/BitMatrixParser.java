@@ -1,6 +1,6 @@
 package com.dcloud.zxing.maxicode.decoder;
 
-import android.support.v4.app.FrameMetricsAggregator;
+import androidx.core.app.FrameMetricsAggregator;
 
 import com.dcloud.zxing.common.BitMatrix;
 

@@ -1,9 +1,12 @@
 package io.dcloud.js.geolocation.system;
 
+import android.Manifest;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 import android.util.Log;
+
+import androidx.annotation.RequiresPermission;
 
 import java.util.Locale;
 import java.util.Timer;
@@ -95,6 +98,7 @@ public class GeoListener {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
+    @RequiresPermission(allOf = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     public void a(IWebview iWebview, int i2, String str) {
         this.q = iWebview;
         this.p = str;
@@ -106,6 +110,7 @@ public class GeoListener {
         Logger.d("GeoListener", "mUseCount=" + this.r);
     }
 
+    @RequiresPermission(allOf = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     private boolean a(int i2, int i3) {
         C0012a c0012a;
         if (this.r == 0) {
@@ -139,6 +144,7 @@ public class GeoListener {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
+    @RequiresPermission(allOf = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     public boolean a(IWebview iWebview, int i2, String str, int i3) {
         this.n = iWebview;
         this.m = str;

@@ -1,6 +1,9 @@
 package io.dcloud.js.geolocation.system;
 
+import android.Manifest;
 import android.content.Context;
+
+import androidx.annotation.RequiresPermission;
 
 import io.dcloud.common.DHInterface.IWebview;
 import io.dcloud.js.geolocation.GeoManagerBase;
@@ -46,10 +49,12 @@ public class LocalGeoManager extends GeoManagerBase {
         this.a = null;
     }
 
+    @RequiresPermission(allOf = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     public void getCurrentLocation(IWebview iWebview, String str, boolean z, int i) {
         a().a(iWebview, i, str);
     }
 
+    @RequiresPermission(allOf = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     public void start(IWebview iWebview, String str, String str2, boolean z, int i, int i2) {
         if (a().a(iWebview, i, str, i2)) {
             this.keySet.add(str2);

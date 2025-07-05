@@ -51,7 +51,7 @@ public class SplashViewDBackground extends RelativeLayout implements ISplash {
         this.c.setTextSize(this.b.a(6.0f));
         this.c.setTextColor(-10855846);
         a(this.a);
-        this.c.setTypeface(Typeface.create("宋体", 0));
+        this.c.setTypeface(Typeface.create("宋体", Typeface.NORMAL));
         addView(this.c, layoutParams2);
     }
 

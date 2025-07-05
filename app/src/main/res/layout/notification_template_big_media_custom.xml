@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp">
-            <DateTimeView
+            <com.lt.batteryManage.widget.DateTimeView
                 android:textAppearance="@style/TextAppearance.Compat.Notification.Time.Media"
                 android:layout_gravity="end|top"
                 android:id="@+id/time"

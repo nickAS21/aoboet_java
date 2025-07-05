@@ -1,6 +1,7 @@
 package io.dcloud.common.common_a;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.graphics.Rect;
 import android.os.Build;
 import android.util.DisplayMetrics;
@@ -89,11 +90,11 @@ public class WebAppInfo implements IAppInfo {
             Window window = getActivity().getWindow();
             if (z) {
                 WindowManager.LayoutParams attributes = window.getAttributes();
-                attributes.flags |= 1024;
+                attributes.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
                 window.setAttributes(attributes);
             } else {
                 WindowManager.LayoutParams attributes2 = window.getAttributes();
-                attributes2.flags &= -1025;
+                attributes2.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
                 window.setAttributes(attributes2);
             }
             updateScreenInfo(this.ag ? 2 : 3);
@@ -135,27 +136,27 @@ public class WebAppInfo implements IAppInfo {
                 @Override // io.dcloud.common.adapter.util.MessageHandler.IMessages
                 public void execute(Object obj) {
                     if ("landscape".equals(str)) {
-                        WebAppInfo.this.Z.setRequestedOrientation(6);
+                        WebAppInfo.this.Z.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
                         return;
                     }
                     if ("landscape-primary".equals(str)) {
-                        WebAppInfo.this.Z.setRequestedOrientation(0);
+                        WebAppInfo.this.Z.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                         return;
                     }
                     if ("landscape-secondary".equals(str)) {
-                        WebAppInfo.this.Z.setRequestedOrientation(8);
+                        WebAppInfo.this.Z.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
                         return;
                     }
                     if ("portrait".equals(str)) {
-                        WebAppInfo.this.Z.setRequestedOrientation(7);
+                        WebAppInfo.this.Z.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
                         return;
                     }
                     if ("portrait-primary".equals(str)) {
-                        WebAppInfo.this.Z.setRequestedOrientation(1);
+                        WebAppInfo.this.Z.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                     } else if ("portrait-secondary".equals(str)) {
-                        WebAppInfo.this.Z.setRequestedOrientation(9);
+                        WebAppInfo.this.Z.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
                     } else {
-                        WebAppInfo.this.Z.setRequestedOrientation(4);
+                        WebAppInfo.this.Z.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
                     }
                 }
             }, 48L, str);
